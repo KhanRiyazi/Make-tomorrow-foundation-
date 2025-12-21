@@ -89,7 +89,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Modern Mobile Menu */
+        /* Mobile Menu */
         .menu-toggle {
             display: none;
             background: none;
@@ -104,7 +104,6 @@
 
         .menu-toggle:hover {
             background: rgba(128, 0, 0, 0.1);
-            transform: rotate(90deg);
         }
 
         .nav-links {
@@ -161,9 +160,9 @@
             box-shadow: 0 6px 20px rgba(128, 0, 0, 0.3);
         }
 
-        /* Hero Section with Modern Design */
+        /* HERO SECTION WITH VISION & MISSION */
         .hero {
-            padding: 10rem 0 5rem;
+            padding: 12rem 0 5rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: var(--white);
             position: relative;
@@ -181,7 +180,7 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             text-align: center;
             position: relative;
@@ -189,29 +188,77 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 3.2rem;
+            margin-bottom: 2rem;
             font-weight: 800;
             line-height: 1.2;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .hero p {
-            font-size: 1.3rem;
+        .hero-subtitle {
+            font-size: 1.4rem;
             opacity: 0.9;
             margin-bottom: 3rem;
-            max-width: 700px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* Modern CTA Buttons */
+        /* Vision & Mission Cards in Hero */
+        .vision-mission-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .vision-card,
+        .mission-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+            text-align: left;
+        }
+
+        .vision-card:hover,
+        .mission-card:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .vision-card i,
+        .mission-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .vision-card h3,
+        .mission-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .vision-card p,
+        .mission-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        /* CTA Buttons */
         .cta-buttons {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .btn {
@@ -270,10 +317,10 @@
             border-color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Modern Image Content Sections */
-        .image-content-section {
+        /* SERVICES SECTION */
+        .services-section {
             padding: 6rem 0;
-            position: relative;
+            background: var(--white);
         }
 
         .section-header {
@@ -308,95 +355,144 @@
             margin: 0 auto;
         }
 
-        .image-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+        /* Professional Image Content Sections */
+        .image-content-section {
+            padding: 4rem 0;
+        }
+
+        .professional-container {
+            display: flex;
+            flex-wrap: wrap;
             align-items: center;
+            gap: 4rem;
+            margin: 2rem 0;
         }
 
-        .image-content.reverse {
-            direction: rtl;
+        .professional-container.reverse {
+            flex-direction: row-reverse;
         }
 
-        .image-content.reverse>* {
-            direction: ltr;
+        .image-container {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
         }
 
-        .section-image {
+        .professional-img {
             width: 100%;
             height: 400px;
             object-fit: cover;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.7s ease;
+            display: block;
         }
 
-        .section-image::after {
-            content: '';
+        .image-container:hover .professional-img {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             background: linear-gradient(45deg, rgba(128, 0, 0, 0.1), transparent);
-            border-radius: var(--radius);
         }
 
-        .section-image:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        .content-container {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
         }
 
-        .section-content {
-            padding: 2rem;
-        }
-
-        .section-content h3 {
+        .content-container h3 {
             font-size: 2.2rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
             line-height: 1.3;
         }
 
-        .feature-grid {
+        .content-container p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .feature-card {
+        .service-card {
             background: var(--white);
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             transition: var(--transition);
-            border-left: 5px solid var(--primary);
-            position: relative;
-            overflow: hidden;
+            text-align: center;
+            border-top: 5px solid var(--primary);
         }
 
-        .feature-card:hover {
+        .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .feature-card i {
-            font-size: 2.5rem;
+        .service-card i {
+            font-size: 3rem;
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             background: linear-gradient(45deg, var(--primary), var(--primary-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .feature-card h4 {
+        .service-card h4 {
             font-size: 1.4rem;
             margin-bottom: 1rem;
             color: var(--primary);
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Impact Stats */
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(128, 0, 0, 0.05);
+            border-radius: var(--radius);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 600;
         }
 
         /* WhatsApp Floating Button */
@@ -651,14 +747,15 @@
             opacity: 0.7;
         }
 
-        /* Responsive Design */
+        /* MOBILE RESPONSIVE DESIGN */
         @media (max-width: 1024px) {
             .hero h1 {
                 font-size: 2.8rem;
             }
 
-            .image-content {
-                gap: 3rem;
+            .vision-card,
+            .mission-card {
+                padding: 2rem;
             }
         }
 
@@ -670,7 +767,7 @@
             }
 
             .logo-text {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
 
             .nav-links {
@@ -686,62 +783,108 @@
                 display: none;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
                 border-radius: 0 0 20px 20px;
-                animation: slideDown 0.3s ease;
-            }
-
-            @keyframes slideDown {
-                from {
-                    transform: translateY(-20px);
-                    opacity: 0;
-                }
-
-                to {
-                    transform: translateY(0);
-                    opacity: 1;
-                }
+                z-index: 999;
             }
 
             .nav-links.active {
                 display: flex;
             }
 
-            /* Hero Adjustments */
+            /* Hero Section Mobile */
             .hero {
-                padding: 8rem 0 4rem;
+                padding: 9rem 0 4rem;
             }
 
             .hero h1 {
                 font-size: 2.3rem;
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            .hero-subtitle {
+                font-size: 1.2rem;
+                padding: 0 1rem;
             }
 
+            .vision-mission-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            .vision-card,
+            .mission-card {
+                padding: 1.5rem;
+            }
+
+            .vision-card h3,
+            .mission-card h3 {
+                font-size: 1.5rem;
+            }
+
+            /* CTA Buttons Mobile */
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+                padding: 0 1rem;
             }
 
             .btn {
                 width: 100%;
                 max-width: 300px;
-                text-align: center;
                 justify-content: center;
             }
 
-            /* Image Content Stacking */
-            .image-content {
-                grid-template-columns: 1fr;
+            /* Image Content Mobile */
+            .professional-container {
+                flex-direction: column;
                 gap: 2rem;
+                padding: 0 1rem;
             }
 
-            .section-content {
+            .professional-container.reverse {
+                flex-direction: column;
+            }
+
+            .image-container {
+                min-width: 100%;
+            }
+
+            .professional-img {
+                height: 300px;
+            }
+
+            .content-container {
+                min-width: 100%;
                 padding: 1rem 0;
+                text-align: center;
             }
 
-            .section-content h3 {
+            .content-container h3 {
                 font-size: 1.8rem;
+            }
+
+            /* Services Grid Mobile */
+            .services-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            /* Impact Stats Mobile */
+            .impact-stats {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            /* Section Headers Mobile */
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .section-header p {
+                padding: 0 1rem;
             }
 
             /* WhatsApp Button Mobile */
@@ -761,16 +904,49 @@
                 font-size: 2rem;
             }
 
-            .section-header h2 {
-                font-size: 2rem;
+            .vision-card h3,
+            .mission-card h3 {
+                font-size: 1.3rem;
             }
 
-            .section-content h3 {
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .content-container h3 {
                 font-size: 1.6rem;
             }
 
+            .professional-img {
+                height: 250px;
+            }
+
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+
             .modal-content {
-                padding: 2rem;
+                padding: 2rem 1.5rem;
+            }
+
+            .btn {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .vision-card,
+            .mission-card {
+                padding: 1.2rem;
             }
         }
     </style>
@@ -792,7 +968,7 @@
 
             <nav>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#mission"><i class="fas fa-bullseye"></i> Mission</a></li>
+                    <li><a href="#hero"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="#services"><i class="fas fa-hands-helping"></i> Services</a></li>
                     <li><a href="#impact"><i class="fas fa-chart-line"></i> Impact</a></li>
                     <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
@@ -804,12 +980,32 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Hero Section with Vision & Mission -->
+    <section class="hero" id="hero">
         <div class="container hero-content">
             <h1>Empowering Every Student's Future</h1>
-            <p>Building brighter tomorrows through personalized career counseling, dedicated mentorship, comprehensive
-                admission support, and timely academic assistance.</p>
+            <p class="hero-subtitle">Building brighter tomorrows through personalized career counseling, dedicated
+                mentorship, comprehensive admission support, and timely academic assistance.</p>
+
+            <!-- Vision & Mission Cards -->
+            <div class="vision-mission-container">
+                <div class="vision-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Our Vision</h3>
+                    <p>To create a world where every student, regardless of background, has equal access to quality
+                        education, mentorship, and opportunities to achieve their fullest potential and build a brighter
+                        future.</p>
+                </div>
+
+                <div class="mission-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Our Mission</h3>
+                    <p>To connect students with comprehensive educational support systems, personalized guidance, and
+                        dedicated mentors who empower them to overcome challenges and achieve their academic and career
+                        goals.</p>
+                </div>
+            </div>
+
             <div class="cta-buttons">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfsO3SojEN1bB3wTaqnCtjjYkuKL6Ntpeea1_xi28ex74MBlQ/viewform"
                     target="_blank" class="btn btn-primary">
@@ -823,74 +1019,91 @@
         </div>
     </section>
 
-    <!-- Mission Section (Left Image, Right Content) -->
-    <section class="image-content-section" id="mission">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Vision & Mission</h2>
-                <p>Creating equal opportunities for every student to achieve their fullest potential</p>
-            </div>
-            <div class="image-content">
-                <img src="https://media.istockphoto.com/id/1998218845/photo/teacher-giving-tutoring-a-group-of-students-at-a-community-college.webp?a=1&b=1&s=612x612&w=0&k=20&c=g1JidzaZ33pATbNj-NmfIRlntKVk2ReUHLwXA0qAf7M="
-                    alt="Students collaborating" class="section-image">
-                <div class="section-content">
-                    <h3>Building Futures, Transforming Lives</h3>
-                    <p>We envision a world where every student, regardless of their background, has access to quality
-                        guidance and resources to shape their future.</p>
-
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <i class="fas fa-eye"></i>
-                            <h4>Our Vision</h4>
-                            <p>Equal opportunities for all students to achieve their dreams and potential through
-                                education.</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-bullseye"></i>
-                            <h4>Our Mission</h4>
-                            <p>Connecting students with mentors and resources for comprehensive educational support.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section (Right Image, Left Content) -->
-    <section class="image-content-section" id="services">
+    <!-- Services Section -->
+    <section class="services-section" id="services">
         <div class="container">
             <div class="section-header">
                 <h2>Our Comprehensive Services</h2>
                 <p>End-to-end support for students' educational journey</p>
             </div>
-            <div class="image-content reverse">
-                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                    alt="Mentorship session" class="section-image">
-                <div class="section-content">
-                    <h3>Personalized Guidance for Every Student</h3>
-                    <p>From career planning to emergency support, we provide comprehensive solutions tailored to
-                        individual needs.</p>
 
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <i class="fas fa-comments"></i>
-                            <h4>Career Counseling</h4>
-                            <p>Personalized guidance on career paths, subjects, and future opportunities.</p>
+            <!-- Service 1 -->
+            <div class="image-content-section">
+                <div class="professional-container">
+                    <div class="image-container">
+                        <img src="./imgs/im10.jpg" alt="Career Counseling" class="professional-img">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="content-container">
+                        <h3>Personalized Career Counseling</h3>
+                        <p>Our expert counselors provide one-on-one guidance to help students discover their true
+                            potential, identify suitable career paths, and make informed decisions about their future.
+                        </p>
+                        <div class="services-grid">
+                            <div class="service-card">
+                                <i class="fas fa-user-graduate"></i>
+                                <h4>Career Assessment</h4>
+                                <p>Comprehensive analysis of skills, interests, and personality traits</p>
+                            </div>
+                            <div class="service-card">
+                                <i class="fas fa-chart-line"></i>
+                                <h4>Path Planning</h4>
+                                <p>Customized roadmap for academic and career progression</p>
+                            </div>
                         </div>
-                        <div class="feature-card">
-                            <i class="fas fa-university"></i>
-                            <h4>Admission Support</h4>
-                            <p>End-to-end assistance with school/college applications and scholarships.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="image-content-section">
+                <div class="professional-container reverse">
+                    <div class="image-container">
+                        <img src="./imgs/im9.jpg" alt="Admission Support" class="professional-img">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="content-container">
+                        <h3>Admission & Scholarship Support</h3>
+                        <p>We guide students through the entire admission process, from application preparation to
+                            scholarship acquisition, ensuring they secure their spot in the best institutions.</p>
+                        <div class="services-grid">
+                            <div class="service-card">
+                                <i class="fas fa-file-alt"></i>
+                                <h4>Application Assistance</h4>
+                                <p>Complete support with documentation and submission</p>
+                            </div>
+                            <div class="service-card">
+                                <i class="fas fa-award"></i>
+                                <h4>Scholarship Guidance</h4>
+                                <p>Identifying and applying for financial aid opportunities</p>
+                            </div>
                         </div>
-                        <div class="feature-card">
-                            <i class="fas fa-user-graduate"></i>
-                            <h4>Mentorship</h4>
-                            <p>One-on-one guidance from experienced professionals and educators.</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fas fa-hand-holding-heart"></i>
-                            <h4>Emergency Aid</h4>
-                            <p>Financial support for exam fees and urgent educational requirements.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="image-content-section">
+                <div class="professional-container">
+                    <div class="image-container">
+                        <img src="./imgs/im6.jpg" alt="Mentorship Program" class="professional-img">
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="content-container">
+                        <h3>Dedicated Mentorship Program</h3>
+                        <p>Students are paired with experienced mentors who provide ongoing guidance, support, and
+                            motivation throughout their educational journey.</p>
+                        <div class="services-grid">
+                            <div class="service-card">
+                                <i class="fas fa-hands-helping"></i>
+                                <h4>One-on-One Mentoring</h4>
+                                <p>Personalized guidance from industry professionals</p>
+                            </div>
+                            <div class="service-card">
+                                <i class="fas fa-comments"></i>
+                                <h4>Regular Check-ins</h4>
+                                <p>Continuous support and progress monitoring</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -898,41 +1111,40 @@
         </div>
     </section>
 
-    <!-- Impact Section (Left Image, Right Content) -->
-    <section class="image-content-section" id="impact">
+    <!-- Impact Section -->
+    <section class="services-section" id="impact" style="background: #f8f9fa;">
         <div class="container">
             <div class="section-header">
                 <h2>Our Measurable Impact</h2>
                 <p>Transforming lives through education and support</p>
             </div>
-            <div class="image-content">
-                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                    alt="Successful students" class="section-image">
-                <div class="section-content">
-                    <h3>Creating Lasting Change</h3>
-                    <p>Our work has touched thousands of lives, creating ripple effects of positive change in
-                        communities across India.</p>
 
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <i class="fas fa-users"></i>
-                            <h4>1,500+ Students</h4>
-                            <p>Reached through virtual and in-person career guidance sessions.</p>
+            <div class="professional-container">
+                <div class="image-container">
+                    <img src="./imgs/im8.jpg" alt="Our Impact" class="professional-img">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="content-container">
+                    <h3>Creating Lasting Change in Communities</h3>
+                    <p>Our work has touched thousands of lives, creating ripple effects of positive change across India.
+                        We measure our success by the success of our students.</p>
+
+                    <div class="impact-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">1,500+</div>
+                            <div class="stat-label">Students Helped</div>
                         </div>
-                        <div class="feature-card">
-                            <i class="fas fa-handshake"></i>
-                            <h4>500+ Mentees</h4>
-                            <p>Connected with dedicated mentors for ongoing support.</p>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Mentor Matches</div>
                         </div>
-                        <div class="feature-card">
-                            <i class="fas fa-home"></i>
-                            <h4>100+ Families</h4>
-                            <p>Supported during emergencies and challenging times.</p>
+                        <div class="stat-item">
+                            <div class="stat-number">1,000+</div>
+                            <div class="stat-label">Successful Admissions</div>
                         </div>
-                        <div class="feature-card">
-                            <i class="fas fa-door-open"></i>
-                            <h4>1,000+ Admissions</h4>
-                            <p>Successful school and college placements guided.</p>
+                        <div class="stat-item">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Families Supported</div>
                         </div>
                     </div>
                 </div>
@@ -941,39 +1153,43 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="image-content-section" id="contact">
+    <section class="services-section" id="contact">
         <div class="container">
             <div class="section-header">
                 <h2>Connect With Us</h2>
                 <p>We're here to help you build a brighter tomorrow</p>
             </div>
-            <div class="image-content reverse">
-                <img src="./imgs/team collab.jpg" alt="Team collaboration" class="section-image">
-                <div class="section-content">
+
+            <div class="professional-container reverse">
+                <div class="image-container">
+                    <img src="./imgs/im5.jpg" alt="Contact Us" class="professional-img">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="content-container">
                     <h3>Let's Start Your Journey</h3>
                     <p>Whether you're a student seeking guidance or a changemaker wanting to help, we're here to connect
                         and collaborate.</p>
 
-                    <div class="feature-grid">
-                        <div class="feature-card" style="cursor: pointer;" onclick="openWhatsAppModal()">
+                    <div class="services-grid">
+                        <div class="service-card" style="cursor: pointer;" onclick="openWhatsAppModal()">
                             <i class="fab fa-whatsapp"></i>
-                            <h4>Instant Chat</h4>
-                            <p>Connect with us instantly via WhatsApp for quick queries and support.</p>
+                            <h4>WhatsApp Support</h4>
+                            <p>Instant chat with our team for quick assistance</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="service-card">
                             <i class="fas fa-envelope"></i>
                             <h4>Email Support</h4>
-                            <p>Detailed inquiries? Email us at support@maketomorrow.in</p>
+                            <p>support@maketomorrow.in</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="service-card">
                             <i class="fas fa-phone"></i>
-                            <h4>Phone Support</h4>
-                            <p>Call us at +91-XXXXXXXXXX during business hours.</p>
+                            <h4>Call Us</h4>
+                            <p>+91-XXXXXXXXXX (10 AM - 6 PM)</p>
                         </div>
-                        <div class="feature-card">
-                            <i class="fas fa-calendar-alt"></i>
+                        <div class="service-card">
+                            <i class="fas fa-calendar-check"></i>
                             <h4>Schedule Meeting</h4>
-                            <p>Book a personalized counseling session with our experts.</p>
+                            <p>Book personalized counseling sessions</p>
                         </div>
                     </div>
                 </div>
@@ -1056,8 +1272,8 @@
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#mission">Our Mission</a></li>
-                        <li><a href="#services">Services</a></li>
+                        <li><a href="#hero">Vision & Mission</a></li>
+                        <li><a href="#services">Our Services</a></li>
                         <li><a href="#impact">Our Impact</a></li>
                         <li><a href="#contact">Contact Us</a></li>
                         <li><a href="#" onclick="openWhatsAppModal(); return false;">WhatsApp Support</a></li>
@@ -1106,9 +1322,17 @@
                 : '<i class="fas fa-bars"></i>';
         });
 
-        // Close menu when clicking outside
+        // Close menu when clicking outside on mobile
         document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+            if (window.innerWidth <= 768 && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+
+        // Close menu when resizing to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
                 navLinks.classList.remove('active');
                 menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
@@ -1118,6 +1342,11 @@
         function openWhatsAppModal() {
             document.getElementById('whatsappModal').classList.add('active');
             document.body.style.overflow = 'hidden';
+            // Close mobile menu if open
+            if (window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         }
 
         function closeWhatsAppModal() {
@@ -1150,8 +1379,10 @@
 
                 if (targetElement) {
                     // Close mobile menu if open
-                    navLinks.classList.remove('active');
-                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
 
                     window.scrollTo({
                         top: targetElement.offsetTop - 100,
@@ -1179,18 +1410,7 @@
             }
         });
 
-        // Add hover effect to feature cards
-        document.querySelectorAll('.feature-card').forEach(card => {
-            card.addEventListener('mouseenter', function () {
-                this.style.transform = 'translateY(-10px)';
-            });
-
-            card.addEventListener('mouseleave', function () {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Animation on scroll
+        // Add animation to sections on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1206,11 +1426,16 @@
         }, observerOptions);
 
         // Observe elements for animation
-        document.querySelectorAll('.image-content-section').forEach(section => {
+        document.querySelectorAll('.professional-container').forEach(section => {
             section.style.opacity = '0';
             section.style.transform = 'translateY(20px)';
             section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(section);
+        });
+
+        // Image loading optimization
+        document.querySelectorAll('.professional-img').forEach(img => {
+            img.loading = 'lazy';
         });
     </script>
 </body>

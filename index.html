@@ -317,6 +317,163 @@
             border-color: rgba(255, 255, 255, 0.5);
         }
 
+        /* Donation Modal Styles */
+        .donation-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .donation-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-header h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-header p {
+            color: var(--text-light);
+        }
+
+        .bank-details {
+            background: rgba(128, 0, 0, 0.05);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .bank-detail-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(128, 0, 0, 0.1);
+        }
+
+        .bank-detail-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .bank-detail-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .bank-detail-value {
+            font-size: 1.2rem;
+            font-family: 'Courier New', monospace;
+            background: white;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(128, 0, 0, 0.1);
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .copy-btn.copied {
+            background: #28a745;
+        }
+
+        .donation-note {
+            background: rgba(255, 204, 0, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .donation-note p {
+            margin: 0;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
         /* SERVICES SECTION */
         .services-section {
             padding: 6rem 0;
@@ -493,173 +650,6 @@
             font-size: 1.1rem;
             color: var(--text-light);
             font-weight: 600;
-        }
-
-        /* WhatsApp Floating Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            color: white;
-            border-radius: 50px;
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-            z-index: 1000;
-            transition: var(--transition);
-            animation: pulse 2s infinite;
-        }
-
-        .whatsapp-float:hover {
-            background: #128C7E;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
-        }
-
-        .whatsapp-float i {
-            font-size: 1.8rem;
-        }
-
-        .whatsapp-text {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-            }
-
-            50% {
-                box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
-            }
-
-            100% {
-                box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-            }
-        }
-
-        /* WhatsApp Modal */
-        .whatsapp-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            backdrop-filter: blur(5px);
-        }
-
-        .whatsapp-modal.active {
-            display: flex;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .modal-content {
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            position: relative;
-            animation: slideUp 0.4s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-light);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .modal-close:hover {
-            color: var(--primary);
-            transform: rotate(90deg);
-        }
-
-        .modal-icon {
-            font-size: 4rem;
-            color: #25D366;
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-content h3 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .modal-content p {
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-
-        .whatsapp-options {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .whatsapp-option {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.2rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-            text-decoration: none;
-            color: var(--text);
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-
-        .whatsapp-option:hover {
-            background: white;
-            border-color: #25D366;
-            transform: translateX(10px);
-        }
-
-        .whatsapp-option i {
-            font-size: 1.5rem;
-            color: #25D366;
         }
 
         /* Footer */
@@ -887,15 +877,13 @@
                 padding: 0 1rem;
             }
 
-            /* WhatsApp Button Mobile */
-            .whatsapp-float {
-                bottom: 20px;
-                right: 20px;
-                padding: 0.8rem 1.5rem;
+            /* Donation Modal Mobile */
+            .modal-content {
+                padding: 2rem;
             }
 
-            .whatsapp-text {
-                display: none;
+            .bank-detail-value {
+                font-size: 1rem;
             }
         }
 
@@ -926,12 +914,16 @@
             }
 
             .modal-content {
-                padding: 2rem 1.5rem;
+                padding: 1.5rem;
             }
 
             .btn {
                 padding: 1rem 1.5rem;
                 font-size: 1rem;
+            }
+
+            .bank-details {
+                padding: 1.5rem;
             }
         }
 
@@ -972,8 +964,8 @@
                     <li><a href="#services"><i class="fas fa-hands-helping"></i> Services</a></li>
                     <li><a href="#impact"><i class="fas fa-chart-line"></i> Impact</a></li>
                     <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
-                    <li><a href="#whatsapp" class="nav-cta" id="whatsappTrigger">
-                            <i class="fab fa-whatsapp"></i> Chat Now
+                    <li><a href="#donate" class="nav-cta" id="donateTrigger">
+                            <i class="fas fa-hand-holding-heart"></i> Donate Us
                         </a></li>
                 </ul>
             </nav>
@@ -1171,10 +1163,10 @@
                         and collaborate.</p>
 
                     <div class="services-grid">
-                        <div class="service-card" style="cursor: pointer;" onclick="openWhatsAppModal()">
-                            <i class="fab fa-whatsapp"></i>
-                            <h4>WhatsApp Support</h4>
-                            <p>Instant chat with our team for quick assistance</p>
+                        <div class="service-card" style="cursor: pointer;" onclick="openDonationModal()">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <h4>Support Our Cause</h4>
+                            <p>Make a donation to empower students' futures</p>
                         </div>
                         <div class="service-card">
                             <i class="fas fa-envelope"></i>
@@ -1197,65 +1189,64 @@
         </div>
     </section>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="#" class="whatsapp-float" onclick="openWhatsAppModal(); return false;">
-        <i class="fab fa-whatsapp"></i>
-        <span class="whatsapp-text">Chat with Us</span>
-    </a>
-
-    <!-- WhatsApp Modal -->
-    <div class="whatsapp-modal" id="whatsappModal">
+    <!-- Donation Modal -->
+    <div class="donation-modal" id="donationModal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeWhatsAppModal()">
+            <button class="modal-close" onclick="closeDonationModal()">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="modal-icon">
-                <i class="fab fa-whatsapp"></i>
-            </div>
-            <h3>Connect via WhatsApp</h3>
-            <p>Choose an option below to start chatting with our team:</p>
-
-            <div class="whatsapp-options">
-                <a href="https://wa.me/919999999999?text=Hi!%20I'm%20a%20student%20seeking%20career%20guidance"
-                    target="_blank" class="whatsapp-option">
-                    <i class="fas fa-graduation-cap"></i>
-                    <div>
-                        <strong>Student Support</strong>
-                        <small>Career guidance & counseling</small>
-                    </div>
-                </a>
-
-                <a href="https://wa.me/919999999999?text=Hi!%20I%20want%20to%20support%20students%20as%20a%20mentor/donor"
-                    target="_blank" class="whatsapp-option">
-                    <i class="fas fa-handshake"></i>
-                    <div>
-                        <strong>Changemaker</strong>
-                        <small>Become a mentor or donor</small>
-                    </div>
-                </a>
-
-                <a href="https://wa.me/919999999999?text=Hi!%20I%20need%20emergency%20academic%20support"
-                    target="_blank" class="whatsapp-option">
-                    <i class="fas fa-first-aid"></i>
-                    <div>
-                        <strong>Emergency Support</strong>
-                        <small>Urgent educational assistance</small>
-                    </div>
-                </a>
-
-                <a href="https://wa.me/919999999999?text=Hi!%20General%20inquiry%20about%20Make%20Tomorrow"
-                    target="_blank" class="whatsapp-option">
-                    <i class="fas fa-question-circle"></i>
-                    <div>
-                        <strong>General Inquiry</strong>
-                        <small>Other questions & information</small>
-                    </div>
-                </a>
+            <div class="modal-header">
+                <h3>Support Our Mission</h3>
+                <p>Your donation helps empower students to build brighter futures</p>
             </div>
 
-            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.7;">
-                <i class="fas fa-clock"></i> We typically respond within 30 minutes
-            </p>
+            <div class="donation-note">
+                <p><i class="fas fa-info-circle"></i> Every contribution directly supports students through
+                    scholarships,
+                    mentorship programs, and educational resources.</p>
+            </div>
+
+            <div class="bank-details">
+                <div class="bank-detail-item">
+                    <div class="bank-detail-label">Bank Account Name</div>
+                    <div class="bank-detail-value">MAKE TOMORROW</div>
+                    <button class="copy-btn" onclick="copyToClipboard('MAKE TOMORROW')">Copy</button>
+                </div>
+
+                <div class="bank-detail-item">
+                    <div class="bank-detail-label">Bank Account Number</div>
+                    <div class="bank-detail-value">82820100003728</div>
+                    <button class="copy-btn" onclick="copyToClipboard('82820100003728')">Copy</button>
+                </div>
+
+                <div class="bank-detail-item">
+                    <div class="bank-detail-label">Bank Name</div>
+                    <div class="bank-detail-value">Bank of Baroda</div>
+                    <button class="copy-btn" onclick="copyToClipboard('State Bank of India')">Copy</button>
+                </div>
+
+                <div class="bank-detail-item">
+                    <div class="bank-detail-label">Branch Name</div>
+                    <div class="bank-detail-value">5 Manak Bihar, New Delhi DL, 110092</div>
+                    <button class="copy-btn" onclick="copyToClipboard('Main Branch, Mumbai')">Copy</button>
+                </div>
+
+                <div class="bank-detail-item">
+                    <div class="bank-detail-label">IFSC Code</div>
+                    <div class="bank-detail-value">BARB0KARDEL</div>
+                    <button class="copy-btn" onclick="copyToClipboard('SBIN0001234')">Copy</button>
+                </div>
+
+                <div class="bank-detail-item">
+                    <div class="bank-detail-label">Account Type</div>
+                    <div class="bank-detail-value">Saving Account</div>
+                </div>
+            </div>
+
+            <div class="donation-note">
+                <p><i class="fas fa-receipt"></i> For donation receipts and tax exemption certificates, please email
+                    your transaction details to donations@maketomorrow.in</p>
+            </div>
         </div>
     </div>
 
@@ -1276,7 +1267,7 @@
                         <li><a href="#services">Our Services</a></li>
                         <li><a href="#impact">Our Impact</a></li>
                         <li><a href="#contact">Contact Us</a></li>
-                        <li><a href="#" onclick="openWhatsAppModal(); return false;">WhatsApp Support</a></li>
+                        <li><a href="#" onclick="openDonationModal(); return false;">Support Our Cause</a></li>
                     </ul>
                 </div>
 
@@ -1303,8 +1294,8 @@
             <div class="copyright">
                 <p>© 2024 Make Tomorrow. All rights reserved. | Empowering Students. Building Futures.</p>
                 <p style="margin-top: 0.5rem;"><a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none;"
-                        onclick="openWhatsAppModal(); return false;">
-                        <i class="fab fa-whatsapp"></i> Need immediate help? Chat with us on WhatsApp
+                        onclick="openDonationModal(); return false;">
+                        <i class="fas fa-hand-holding-heart"></i> Support our mission to empower students
                     </a></p>
             </div>
         </div>
@@ -1338,9 +1329,9 @@
             }
         });
 
-        // WhatsApp Modal Functions
-        function openWhatsAppModal() {
-            document.getElementById('whatsappModal').classList.add('active');
+        // Donation Modal Functions
+        function openDonationModal() {
+            document.getElementById('donationModal').classList.add('active');
             document.body.style.overflow = 'hidden';
             // Close mobile menu if open
             if (window.innerWidth <= 768) {
@@ -1349,24 +1340,42 @@
             }
         }
 
-        function closeWhatsAppModal() {
-            document.getElementById('whatsappModal').classList.remove('active');
+        function closeDonationModal() {
+            document.getElementById('donationModal').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
         // Close modal when clicking outside
-        document.getElementById('whatsappModal').addEventListener('click', (e) => {
-            if (e.target.id === 'whatsappModal') {
-                closeWhatsAppModal();
+        document.getElementById('donationModal').addEventListener('click', (e) => {
+            if (e.target.id === 'donationModal') {
+                closeDonationModal();
             }
         });
 
         // Close modal with Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                closeWhatsAppModal();
+                closeDonationModal();
             }
         });
+
+        // Copy to Clipboard Function
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy text to clipboard');
+            });
+        }
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1392,10 +1401,10 @@
             });
         });
 
-        // WhatsApp trigger from navigation
-        document.getElementById('whatsappTrigger').addEventListener('click', (e) => {
+        // Donation trigger from navigation
+        document.getElementById('donateTrigger').addEventListener('click', (e) => {
             e.preventDefault();
-            openWhatsAppModal();
+            openDonationModal();
         });
 
         // Add scroll effect to header
