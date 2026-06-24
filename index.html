@@ -1,344 +1,1825 @@
 <!DOCTYPE html>
-<html lang="en-IN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Make Tomorrow — Empowering Students to Build a Brighter Tomorrow</title>
-<meta name="description" content="Make Tomorrow connects students with career counseling, mentorship, admission support, and scholarship guidance — and connects changemakers who want to fund the next chapter.">
+<html lang="en">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Make Tomorrow | Skilling India's Women &amp; Youth</title>
+    <meta name="description"
+        content="Make Tomorrow creates pathways to empowerment through skill education and livelihood opportunities for women, youth and public education across India." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        :root {
+            --ink: #1e1a17;
+            --terracotta: #B5482E;
+            --terracotta-dark: #8C351F;
+            --terracotta-light: #d97a5e;
+            --marigold: #D98E2B;
+            --marigold-light: #f0c06a;
+            --sand: #EFE3CC;
+            --paper: #FAF6EF;
+            --thread: #5C6B5E;
+            --white: #FFFFFF;
+            --font-display: 'Fraunces', serif;
+            --font-body: 'Manrope', sans-serif;
+            --radius: 16px;
+            --maxw: 1180px;
+            --shadow-sm: 0 4px 16px rgba(30, 26, 23, 0.06);
+            --shadow-md: 0 12px 32px rgba(30, 26, 23, 0.10);
+            --shadow-lg: 0 24px 56px rgba(30, 26, 23, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--ink);
+            background: var(--paper);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .container {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            margin: 0 0 0.4em;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(30px, 4.2vw, 46px);
+        }
+
+        h3 {
+            font-size: clamp(20px, 2.4vw, 26px);
+        }
+
+        p {
+            margin: 0 0 1em;
+        }
+
+        .center {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .lead {
+            max-width: 680px;
+            font-size: 18px;
+            color: #4a423c;
+        }
+
+        .eyebrow {
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--terracotta);
+            margin-bottom: 12px;
+        }
+
+        .eyebrow.light {
+            color: var(--marigold);
+        }
+
+        /* ===== SCROLL TRACK ===== */
+        .thread-track {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            z-index: 1100;
+            background: transparent;
+        }
+
+        .thread-fill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--terracotta), var(--marigold));
+            transition: width 0.08s linear;
+        }
+
+        /* ===== HEADER ===== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(250, 246, 239, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(30, 26, 23, 0.06);
+            transition: box-shadow 0.3s;
+        }
+
+        .site-header.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 76px;
+        }
+
+        /* ---- Brand Logo ---- */
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+        }
+
+        .brand-logo {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .brand span {
+            color: var(--terracotta);
+        }
+
+        /* ---- Nav ---- */
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-size: 14.5px;
+            font-weight: 600;
+        }
+
+        .main-nav a {
+            opacity: 0.75;
+            transition: opacity 0.2s, color 0.2s;
+            position: relative;
+        }
+
+        .main-nav a:hover {
+            opacity: 1;
+            color: var(--terracotta);
+        }
+
+        .main-nav a.active-link {
+            opacity: 1;
+            color: var(--terracotta);
+        }
+
+        .main-nav a.active-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--terracotta);
+            border-radius: 2px;
+        }
+
+        .nav-cta {
+            background: var(--terracotta);
+            color: var(--white) !important;
+            padding: 9px 22px;
+            border-radius: 30px;
+            opacity: 1 !important;
+            transition: background 0.25s, transform 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-1px);
+            color: var(--white) !important;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 34px;
+            height: 34px;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 2.5px;
+            background: var(--ink);
+            border-radius: 2px;
+            transition: 0.25s;
+        }
+
+        .nav-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 15px;
+            border: 2px solid transparent;
+            transition: all 0.25s ease;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--terracotta);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(181, 72, 46, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(181, 72, 46, 0.30);
+        }
+
+        .btn-ghost {
+            border-color: var(--ink);
+            color: var(--ink);
+            background: transparent;
+        }
+
+        .btn-ghost:hover {
+            background: var(--ink);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border-color: var(--terracotta);
+            color: var(--terracotta);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--terracotta);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            padding: 150px 0 80px;
+            overflow: hidden;
+            background: var(--sand);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .hero-bg svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content .eyebrow {
+            color: var(--terracotta);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(44px, 7vw, 78px);
+            margin-bottom: 16px;
+            line-height: 1.05;
+        }
+
+        .hero-content h1 span {
+            color: var(--terracotta);
+        }
+
+        .hero-sub {
+            font-size: 19px;
+            color: #4a423c;
+            max-width: 500px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            margin: 30px 0 48px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .hstat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hstat .num {
+            font-family: var(--font-display);
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--terracotta);
+            line-height: 1;
+        }
+
+        .hstat .label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--thread);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* ---- Hero Illustration (Happy Emotions) ---- */
+        .hero-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-illustration {
+            width: 100%;
+            max-width: 520px;
+            aspect-ratio: 1/1;
+            object-fit: contain;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 96px 0;
+        }
+
+        .section-tint {
+            background: var(--sand);
+        }
+
+        .section-dark {
+            background: var(--ink);
+            color: var(--sand);
+        }
+
+        .section-dark h2,
+        .section-dark h3 {
+            color: var(--white);
+        }
+
+        .section-dark p {
+            color: #cfc6bd;
+        }
+
+        .light {
+            color: var(--white) !important;
+        }
+
+        /* ===== WHO WE ARE ===== */
+        .split {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .split-text h2 {
+            margin-bottom: 16px;
+        }
+
+        .split-text p {
+            color: #4a423c;
+            font-size: 16px;
+        }
+
+        .split-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .value-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 30px 32px;
+            border: 1px solid rgba(30, 26, 23, 0.08);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .value-card--alt {
+            background: var(--ink);
+            color: var(--sand);
+        }
+
+        .value-card--alt p {
+            color: #cfc6bd;
+        }
+
+        .value-tag {
+            display: inline-block;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--terracotta);
+            margin-bottom: 10px;
+        }
+
+        .value-card--alt .value-tag {
+            color: var(--marigold);
+        }
+
+        /* ===== WHAT WE DO ===== */
+        .three-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 48px;
+        }
+
+        .thread-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 34px 28px;
+            border: 1px solid rgba(30, 26, 23, 0.06);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .thread-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .thread-icon {
+            font-size: 32px;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .thread-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .thread-card p {
+            color: #4a423c;
+            font-size: 15px;
+            margin: 0;
+        }
+
+        /* ===== WHY WE DO ===== */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .stat-block {
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .stat-block .num {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--terracotta);
+            line-height: 1.1;
+        }
+
+        .stat-block p {
+            font-size: 14.5px;
+            color: #4a423c;
+            max-width: 240px;
+            margin: 8px auto 0;
+        }
+
+        .sdg-strip {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            border: 1px solid rgba(30, 26, 23, 0.06);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sdg-strip p {
+            margin: 0;
+            max-width: 560px;
+            color: #4a423c;
+        }
+
+        .sdg-dots {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .sdg-dots span {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sdg-dots span:nth-child(even) {
+            background: var(--marigold);
+        }
+
+        /* ===== SERIOUS EMOTIONS — IMPACT ILLUSTRATION ===== */
+        .impact-visual-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin: 48px 0 20px;
+        }
+
+        .impact-visual-row .impact-text h2 {
+            margin-bottom: 12px;
+        }
+
+        .impact-visual-row .impact-text p {
+            color: #4a423c;
+        }
+
+        .impact-illustration {
+            width: 100%;
+            max-width: 480px;
+            aspect-ratio: 1/1;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+
+        /* ===== IMPACT GRID ===== */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+            margin: 40px 0 60px;
+        }
+
+        .impact-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 34px 28px;
+            text-align: center;
+            border: 1px solid rgba(30, 26, 23, 0.06);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .impact-card .num {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--terracotta);
+            margin-bottom: 6px;
+            line-height: 1;
+        }
+
+        .impact-card h3 {
+            margin-bottom: 6px;
+            font-size: 18px;
+        }
+
+        .impact-card p {
+            color: #4a423c;
+            font-size: 14.5px;
+            margin: 0;
+        }
+
+        .map-block {
+            background: var(--sand);
+            border-radius: var(--radius);
+            padding: 44px;
+            text-align: center;
+            border: 1px solid rgba(30, 26, 23, 0.06);
+        }
+
+        .zone-pills {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            background: var(--ink);
+            color: var(--white);
+            padding: 8px 22px;
+            border-radius: 30px;
+            font-size: 13.5px;
+            font-weight: 600;
+        }
+
+        /* ===== STORIES ===== */
+        .story-tab-nav {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .story-tab-btn {
+            background: var(--white);
+            border: 2px solid transparent;
+            padding: 12px 26px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14.5px;
+            color: #4a423c;
+            transition: 0.25s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .story-tab-btn:hover {
+            border-color: var(--terracotta-light);
+        }
+
+        .story-tab-btn.active {
+            border-color: var(--terracotta);
+            color: var(--terracotta);
+            background: rgba(181, 72, 46, 0.06);
+        }
+
+        .story-panel {
+            display: none;
+            animation: fadeUp 0.45s ease;
+        }
+
+        .story-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .story-before,
+        .story-after {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px;
+            border: 1px solid rgba(30, 26, 23, 0.06);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .story-after {
+            background: var(--terracotta);
+            color: var(--white);
+            border-color: var(--terracotta);
+        }
+
+        .story-label {
+            display: inline-block;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+            color: var(--terracotta);
+        }
+
+        .story-after .story-label {
+            color: var(--sand);
+        }
+
+        .story-before p,
+        .story-after p {
+            font-size: 15px;
+        }
+
+        .story-before p {
+            color: #4a423c;
+        }
+
+        .story-after p {
+            color: #fff0e8;
+        }
+
+        .skill-note {
+            font-style: italic;
+            font-size: 14px;
+            color: var(--thread) !important;
+        }
+
+        .story-quote {
+            font-weight: 600;
+            font-size: 16px !important;
+        }
+
+        /* ===== MOVEMENT ===== */
+        .big-quote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: clamp(22px, 3vw, 32px);
+            max-width: 780px;
+            margin: 0 auto 60px;
+            text-align: center;
+            color: var(--white);
+            line-height: 1.4;
+        }
+
+        .roadmap {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .phase {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .phase:hover {
+            background: rgba(255, 255, 255, 0.10);
+            transform: translateY(-4px);
+        }
+
+        .phase-tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--marigold);
+            margin-bottom: 14px;
+        }
+
+        /* ===== DONATE ===== */
+        .donate-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 50px 0 60px;
+        }
+
+        .donate-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            text-align: center;
+            border: 1px solid rgba(30, 26, 23, 0.06);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .donate-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .donate-card--featured {
+            border-color: var(--terracotta);
+            box-shadow: 0 16px 40px rgba(181, 72, 46, 0.18);
+            transform: translateY(-6px);
+        }
+
+        .donate-card--featured:hover {
+            transform: translateY(-10px);
+        }
+
+        .featured-tag {
+            position: absolute;
+            top: -13px;
+            background: var(--marigold);
+            color: var(--ink);
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 5px 16px;
+            border-radius: 20px;
+        }
+
+        .donate-amount {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--terracotta);
+        }
+
+        .donate-amount small {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--thread);
+        }
+
+        .donate-card p {
+            margin: 0;
+            font-size: 14.5px;
+            color: #4a423c;
+        }
+
+        /* ---- Donate Form ---- */
+        .donate-form {
+            max-width: 640px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 44px;
+            border: 1px solid rgba(30, 26, 23, 0.06);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .donate-form h3 {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .donate-form input,
+        .donate-form select {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(30, 26, 23, 0.16);
+            font-family: inherit;
+            font-size: 14.5px;
+            background: var(--paper);
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+
+        .donate-form input:focus,
+        .donate-form select:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 3px rgba(181, 72, 46, 0.12);
+        }
+
+        .form-confirm {
+            text-align: center;
+            margin: 16px 0 0;
+            font-weight: 700;
+            color: var(--terracotta);
+            min-height: 24px;
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background: var(--ink);
+            color: var(--sand);
+            padding: 64px 0 20px;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 36px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-brand .brand {
+            color: var(--white);
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .footer-brand p,
+        .footer-contact p,
+        .footer-social p {
+            color: #cfc6bd;
+            font-size: 14.5px;
+            margin: 0 0 4px;
+        }
+
+        .footer-contact strong,
+        .footer-social strong {
+            color: var(--white);
+        }
+
+        .social-row {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .social-row a {
+            font-size: 14px;
+            color: var(--marigold);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .social-row a:hover {
+            color: var(--marigold-light);
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #9a9088;
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            color: var(--white);
+            border: none;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 900;
+            box-shadow: 0 8px 24px rgba(30, 26, 23, 0.25);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px) scale(1.04);
+        }
+
+        /* ===== REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-content .hero-sub {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-illustration {
+                max-width: 380px;
+            }
+
+            .split {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .impact-visual-row {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .impact-illustration {
+                max-width: 380px;
+            }
+
+            .three-col,
+            .stat-row,
+            .impact-grid,
+            .roadmap,
+            .donate-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                position: fixed;
+                top: 76px;
+                left: 0;
+                right: 0;
+                background: var(--paper);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 28px 28px 32px;
+                gap: 18px;
+                border-bottom: 1px solid rgba(30, 26, 23, 0.08);
+                transform: translateY(-110%);
+                transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+                box-shadow: var(--shadow-md);
+            }
+
+            .main-nav.open {
+                transform: translateY(0);
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .three-col,
+            .stat-row,
+            .impact-grid,
+            .roadmap,
+            .donate-grid,
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 130px 0 60px;
+                min-height: auto;
+            }
+
+            .hero-stats {
+                gap: 30px;
+            }
+
+            .hero-illustration {
+                max-width: 280px;
+            }
+
+            .impact-illustration {
+                max-width: 280px;
+            }
+
+            .donate-card--featured {
+                transform: none;
+            }
+
+            .donate-card--featured:hover {
+                transform: translateY(-4px);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .donate-form {
+                padding: 28px 20px;
+            }
+
+            .sdg-strip {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .story-tab-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero-content h1 {
+                font-size: 34px;
+            }
+
+            .hero-illustration {
+                max-width: 200px;
+            }
+
+            .impact-illustration {
+                max-width: 200px;
+            }
+
+            .stat-block .num {
+                font-size: 34px;
+            }
+
+            .impact-card .num {
+                font-size: 34px;
+            }
+
+            .donate-amount {
+                font-size: 26px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            * {
+                animation-duration: 0.001ms !important;
+                transition-duration: 0.001ms !important;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- Horizon progress rule — fixed at the very top, fills as the page is read -->
-<div class="horizon-progress" aria-hidden="true"><span id="horizonFill"></span></div>
-
-<!-- Header -->
-<header class="header" id="header">
-  <div class="wrap nav-row">
-    <a href="#top" class="brand">
-      <img src="https://img1.wsimg.com/isteam/ip/9e407d7a-8ba7-4191-95b4-fa6669e6a197/blob-ef397f9.png" alt="Make Tomorrow" class="brand-mark">
-      <span class="brand-word">Make<em>Tomorrow</em></span>
-    </a>
-
-    <nav class="nav" id="nav">
-      <a href="#top"><i class="fa-solid fa-house"></i>Home</a>
-      <a href="#what-we-do"><i class="fa-solid fa-seedling"></i>What we do</a>
-      <a href="#counseling"><i class="fa-solid fa-route"></i>Counseling</a>
-      <a href="#impact"><i class="fa-solid fa-chart-line"></i>Impact</a>
-      <a href="#contact"><i class="fa-solid fa-comment-dots"></i>Contact</a>
-      <button class="btn btn-coral btn-sm" id="donateTrigger"><i class="fa-solid fa-hand-holding-heart"></i>Donate</button>
-    </nav>
-
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<!-- Hero — the horizon: night giving way to a new day -->
-<section class="hero" id="top">
-  <div class="hero-sky" aria-hidden="true">
-    <svg id="sunSvg" class="hero-sun" viewBox="0 0 600 300" preserveAspectRatio="xMidYMax meet">
-      <defs>
-        <linearGradient id="sunGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#FFD98E"/>
-          <stop offset="100%" stop-color="#FF6B5B"/>
-        </linearGradient>
-      </defs>
-      <line class="ray" x1="300" y1="130" x2="300" y2="95"/>
-      <line class="ray" x1="210" y1="150" x2="185" y2="120"/>
-      <line class="ray" x1="390" y1="150" x2="415" y2="120"/>
-      <line class="ray" x1="150" y1="205" x2="110" y2="190"/>
-      <line class="ray" x1="450" y1="205" x2="490" y2="190"/>
-      <circle id="sunDisc" cx="300" cy="230" r="110" fill="url(#sunGrad)"/>
-      <rect x="0" y="230" width="600" height="70" fill="#0F1322"/>
-      <line x1="0" y1="230" x2="600" y2="230" stroke="#FF8A65" stroke-width="2"/>
-    </svg>
-  </div>
-
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow"><span class="dot"></span>Student welfare &amp; educational development, India</p>
-      <h1>Every sunrise is a chance<br> to <em>rewrite tomorrow.</em></h1>
-      <p class="lede">Make Tomorrow pairs students with career counseling, dedicated mentors, admission support, and timely scholarship guidance — and pairs changemakers with the students who need them.</p>
-
-      <div class="hero-actions">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfsO3SojEN1bB3wTaqnCtjjYkuKL6Ntpeea1_xi28ex74MBlQ/viewform" target="_blank" rel="noopener" class="btn btn-coral btn-lg">
-          <i class="fa-solid fa-graduation-cap"></i> I'm a student — get support
-        </a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScSKMxUvy3D_2TGRAd0R2D1leQH8WQ3W-nkNxXgk-OQh9ES0w/viewform" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">
-          <i class="fa-solid fa-handshake"></i> I'm a changemaker — provide support
-        </a>
-      </div>
-
-      <p class="hero-scroll-cue"><i class="fa-solid fa-arrow-down"></i> See how it works</p>
+    <!-- ===== SCROLL TRACK ===== -->
+    <div class="thread-track" aria-hidden="true">
+        <div class="thread-fill" id="threadFill"></div>
     </div>
 
-    <div class="hero-pillars">
-      <div class="pillar-card">
-        <i class="fa-solid fa-eye"></i>
-        <h3>Our Vision</h3>
-        <p>A world where every student, regardless of background, has equal access to quality education, mentorship, and the chance to reach their fullest potential.</p>
-      </div>
-      <div class="pillar-card pillar-card--gold">
-        <i class="fa-solid fa-bullseye"></i>
-        <h3>Our Mission</h3>
-        <p>Connecting students to comprehensive support systems and dedicated mentors who help them clear academic and career hurdles, one decision at a time.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- What We Do -->
-<section class="section" id="what-we-do">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow eyebrow--dark"><span class="dot"></span>What we do</p>
-      <h2>Holistic support, built around the student.</h2>
-      <p class="section-sub">Guidance, mentorship, and career awareness — so every school student has the knowledge, skills, and direction to build a confident future.</p>
-    </div>
-
-    <div class="row">
-      <div class="row-media">
-        <img src="./imgs/im10.jpg" alt="Career counseling session" loading="lazy">
-      </div>
-      <div class="row-body">
-        <span class="row-tag">01 · Stay informed</span>
-        <div class="mini-grid">
-          <div class="mini-card">
-            <i class="fa-solid fa-user-graduate"></i>
-            <h4>Admission updates</h4>
-            <p>Key dates, eligibility criteria, and application support for schools, colleges, and competitive exams — shared through our social channels.</p>
-          </div>
-          <div class="mini-card">
-            <i class="fa-solid fa-chart-line"></i>
-            <h4>Scholarship updates</h4>
-            <p>International, national, and state-level scholarship information with hands-on application assistance.</p>
-          </div>
+    <!-- ===== HEADER ===== -->
+    <header class="site-header" id="siteHeader">
+        <div class="container header-inner">
+            <a href="#top" class="brand" aria-label="Make Tomorrow home">
+                <!-- Brand Logo from local imgs folder -->
+                <img src="./imgs/logo.jpg" alt="Make Tomorrow Logo" class="brand-logo" />
+                Make <span>Tomorrow</span>
+            </a>
+            <nav class="main-nav" id="mainNav">
+                <a href="#who">Who We Are</a>
+                <a href="#why">Why We Do</a>
+                <a href="#impact">Impact</a>
+                <a href="#stories">Stories</a>
+                <a href="#donate" class="nav-cta">Donate</a>
+            </nav>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-      </div>
-    </div>
+    </header>
 
-    <div class="row row--reverse">
-      <div class="row-media">
-        <img src="./imgs/im9.jpg" alt="Mentor supporting a student" loading="lazy">
-      </div>
-      <div class="row-body">
-        <span class="row-tag">02 · Stay supported</span>
-        <h3>Individual mentoring</h3>
-        <p class="row-lede">Trained mentors offer regular check-ins, motivation, and personalized study planning.</p>
-        <div class="mini-grid">
-          <div class="mini-card">
-            <i class="fa-solid fa-file-invoice-dollar"></i>
-            <h4>Emergency fee support</h4>
-            <p>Fast financial assistance for board exam fees or urgent educational needs, after verification.</p>
-          </div>
-          <div class="mini-card">
-            <i class="fa-solid fa-award"></i>
-            <h4>Connecting helping hands</h4>
-            <p>We link volunteers and donors directly to genuine students who need guidance or fee support.</p>
-          </div>
+    <main id="top">
+
+        <!-- ===== HERO — Happy Emotions ===== -->
+        <section class="hero" id="hero">
+            <div class="hero-bg" aria-hidden="true">
+                <svg viewBox="0 0 1200 800" preserveAspectRatio="none">
+                    <path d="M0,400 C150,250 300,550 450,400 C600,250 750,550 900,400 C1050,250 1200,550 1200,400"
+                        stroke="#B5482E" stroke-width="2" stroke-dasharray="12 10" fill="none" opacity="0.2" />
+                    <path d="M0,500 C200,350 400,600 600,500 C800,400 1000,600 1200,500" stroke="#D98E2B"
+                        stroke-width="1.5" stroke-dasharray="8 8" fill="none" opacity="0.15" />
+                </svg>
+            </div>
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <p class="eyebrow">A Non-Profit Building India's School-to-Work Bridge</p>
+                    <h1>Make <span>Tomorrow</span></h1>
+                    <p class="hero-sub">Creating pathways to empowerment through skill education and livelihood
+                        opportunities for public education, youth &amp; women.</p>
+                    <div class="hero-actions">
+                        <a href="#donate" class="btn btn-primary">Support the Movement</a>
+                        <a href="#who" class="btn btn-ghost">Read Our Story</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hstat"><span class="num" data-count="200" data-suffix="+">0</span><span
+                                class="label">Women Trained</span></div>
+                        <div class="hstat"><span class="num" data-count="100" data-suffix="+">0</span><span
+                                class="label">Youth Employed</span></div>
+                        <div class="hstat"><span class="num" data-count="10" data-suffix="+">0</span><span
+                                class="label">Govt. Schools</span></div>
+                    </div>
+                </div>
+                <!-- HAPPY EMOTIONS ILLUSTRATION — local image -->
+                <div class="hero-visual">
+                    <img src="./imgs/happy.jpg" alt="Happy and empowered woman illustration"
+                        class="hero-illustration" />
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHO WE ARE ===== -->
+        <section class="section" id="who">
+            <div class="container split">
+                <div class="split-text">
+                    <p class="eyebrow">Who We Are</p>
+                    <h2>An India where every woman, child and youth has the skills to shape their own future.</h2>
+                    <p>Make Tomorrow is an Indian non-profit organisation dedicated to creating pathways to empowerment
+                        through system strengthening, skill education and livelihood opportunities for women, children
+                        and youth.</p>
+                </div>
+                <div class="split-cards">
+                    <div class="value-card reveal">
+                        <span class="value-tag">Vision</span>
+                        <p>An India where every woman, child and youth has the skills, confidence, and opportunity to
+                            build a dignified career, livelihood and shape a self-reliant future.</p>
+                    </div>
+                    <div class="value-card value-card--alt reveal">
+                        <span class="value-tag">Mission</span>
+                        <p>To empower women and youth across India with market-relevant skills, entrepreneurship
+                            support,
+                            and structured pathways to employment — embedding vocational learning within public
+                            education
+                            systems for lasting, scalable change.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHAT WE DO ===== -->
+        <section class="section section-tint" id="what">
+            <div class="container">
+                <p class="eyebrow center">What We Do</p>
+                <h2 class="center">Three threads, one fabric of change</h2>
+                <div class="three-col">
+                    <div class="thread-card reveal">
+                        <span class="thread-icon">🏛️</span>
+                        <h3>Public Education</h3>
+                        <p>Strengthening State &amp; District systems with skill curricula aligned to NEP 2020.</p>
+                    </div>
+                    <div class="thread-card reveal">
+                        <span class="thread-icon">🧑‍🎓</span>
+                        <h3>Youth Empowerment</h3>
+                        <p>Guiding out-of-school and unemployed youth from counselling to careers.</p>
+                    </div>
+                    <div class="thread-card reveal">
+                        <span class="thread-icon">🧵</span>
+                        <h3>Women Empowerment</h3>
+                        <p>Turning unrecognised craft into market-ready, income-generating skill.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHY WE DO ===== -->
+        <section class="section" id="why">
+            <div class="container">
+                <p class="eyebrow center">Why We Do</p>
+                <h2 class="center">The Skills Gap in India</h2>
+                <p class="center lead">Without practical life skills, women remain economically dependent and youth
+                    remain unemployable. The school-to-work transition is broken — and no one is building the bridge.
+                    Make Tomorrow is.</p>
+                <div class="stat-row">
+                    <div class="stat-block reveal">
+                        <span class="num" data-count="60" data-suffix="M+">0</span>
+                        <p>Indian women with no income-generating skill or pathway to economic independence.</p>
+                    </div>
+                    <div class="stat-block reveal">
+                        <span class="num" data-count="30" data-suffix="M">0</span>
+                        <p>Young people with no structured pathway to employment or vocational training.</p>
+                    </div>
+                    <div class="stat-block reveal">
+                        <span class="num" data-count="3" data-prefix="" data-suffix=" in 1">0</span>
+                        <p>Youth leaving school with no vocational or life skills — and no bridge to work.</p>
+                    </div>
+                </div>
+                <div class="sdg-strip reveal">
+                    <p>Our work is directly aligned with the UN's 2030 Agenda — driving <strong>7 of 17 Sustainable
+                            Development Goals</strong>, from lifting women out of poverty to building partnerships for
+                        systemic change.</p>
+                    <div class="sdg-dots" aria-hidden="true">
+                        <span>1</span><span>4</span><span>5</span><span>8</span><span>10</span><span>16</span><span>17</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== IMPACT with SERIOUS EMOTIONS illustration ===== -->
+        <section class="section section-tint" id="impact">
+            <div class="container">
+
+                <!-- Serious Emotions Illustration + Text -->
+                <div class="impact-visual-row">
+                    <div class="impact-text">
+                        <p class="eyebrow">Our Impact</p>
+                        <h2>Determined to change lives — one skill at a time.</h2>
+                        <p>We work with unwavering resolve to bridge the gap between aspiration and opportunity. Every
+                            woman trained, every youth employed, every school strengthened — is a step toward a more
+                            equitable India.</p>
+                    </div>
+                    <img src="./imgs/serious.jpg" alt="Serious and determined youth illustration"
+                        class="impact-illustration" />
+                </div>
+
+                <!-- Impact Numbers -->
+                <div class="impact-grid">
+                    <div class="impact-card reveal">
+                        <span class="num" data-count="10" data-suffix="+">0</span>
+                        <h3>Government Schools</h3>
+                        <p>Embedding vocational curriculum aligned with NEP 2020 through Government partnership.</p>
+                    </div>
+                    <div class="impact-card reveal">
+                        <span class="num" data-count="100" data-suffix="+">0</span>
+                        <h3>Youth Employed</h3>
+                        <p>Connected to real employment opportunities through Career Connect Centres.</p>
+                    </div>
+                    <div class="impact-card reveal">
+                        <span class="num" data-count="200" data-suffix="+">0</span>
+                        <h3>Women Trained</h3>
+                        <p>In income-generating skills across stitching, embroidery, and handicraft.</p>
+                    </div>
+                </div>
+
+                <div class="map-block reveal">
+                    <h3 class="center">Our Impact Zones</h3>
+                    <p class="center lead" style="max-width:400px;margin:0 auto;">Delhi &amp; Uttar Pradesh</p>
+                    <div class="zone-pills">
+                        <span class="pill">Delhi</span>
+                        <span class="pill">Uttar Pradesh</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== STORIES ===== -->
+        <section class="section" id="stories">
+            <div class="container">
+                <p class="eyebrow center">Stories of Change</p>
+                <h2 class="center">A woman changes a household. A youth becomes a breadwinner.</h2>
+
+                <div class="story-tabs">
+                    <div class="story-tab-nav">
+                        <button class="story-tab-btn active" data-tab="rabia">Rabia's Story</button>
+                        <button class="story-tab-btn" data-tab="keshav">Keshav's Story</button>
+                    </div>
+
+                    <article class="story-panel active" id="rabia">
+                        <div class="story-grid">
+                            <div class="story-before">
+                                <span class="story-label">Before</span>
+                                <p>Rabia, a homemaker from a low-income household in Rampur, Uttar Pradesh, raised three
+                                    children while her husband — a truck driver — struggled with alcohol dependency and
+                                    irregular income. With no independent income or formal education, the family often
+                                    fell short of food, clothing and school fees.</p>
+                                <p class="skill-note">Unrecognised skill: self-taught stitching &amp; zardozi
+                                    embroidery.
+                                </p>
+                            </div>
+                            <div class="story-after">
+                                <span class="story-label">After</span>
+                                <p>A Make Tomorrow team member, reached through a community referral, recognised her
+                                    untapped craft potential and enrolled her in a structured skilling programme —
+                                    upgrading her embroidery to market-ready standards.</p>
+                                <p class="story-quote">Rabia now earns ₹200–₹500 per day through zardozi work orders,
+                                    supporting her family and her children's school expenses with newfound financial
+                                    independence.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="story-panel" id="keshav">
+                        <div class="story-grid">
+                            <div class="story-before">
+                                <span class="story-label">The Challenge</span>
+                                <p>Keshav, 17, dropped out after Class 10 due to family pressures and lost interest in
+                                    formal education. With no skills or direction, he spent his days idle on the streets
+                                    — facing stigma and growing frustration.</p>
+                                <p class="skill-note">Found through dropout outreach data at a government school in
+                                    Patparganj.</p>
+                            </div>
+                            <div class="story-after">
+                                <span class="story-label">The Outcome</span>
+                                <p>Keshav shared his interest in computers and content creation. The team enrolled him
+                                    in
+                                    a 3-month Career Connect Course covering MS Word, AI tools, Canva &amp; video
+                                    editing.</p>
+                                <p class="story-quote">"I will support my family with this. I never thought I would get
+                                    a
+                                    job like this." Keshav was placed at TeamLease Services as a Data Collection
+                                    Associate, earning ₹18,000/month.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MOVEMENT ===== -->
+        <section class="section section-dark" id="movement">
+            <div class="container">
+                <p class="eyebrow center light">Building a Movement, Not Just a Program</p>
+                <blockquote class="big-quote">"A skilled woman doesn't just transform her own life — she transforms her
+                    family, her neighborhood, and the next generation. That multiplier effect is what Make Tomorrow is
+                    building."</blockquote>
+
+                <div class="roadmap">
+                    <div class="phase reveal">
+                        <span class="phase-tag">Phase 1 · 2026–27</span>
+                        <h3 class="light">Deepen Local Impact</h3>
+                        <p>Scale skilling centres, grow the women's network — reach 200 women, 100 youth and 20 schools
+                            in target geographies.</p>
+                    </div>
+                    <div class="phase reveal">
+                        <span class="phase-tag">Phase 2 · 2027–28</span>
+                        <h3 class="light">State-Level Expansion</h3>
+                        <p>Replicate across 3–5 districts. Forge MoUs with state governments for school integration at
+                            scale.</p>
+                    </div>
+                    <div class="phase reveal">
+                        <span class="phase-tag">Phase 3 · 2028–30</span>
+                        <h3 class="light">National System Change</h3>
+                        <p>A replicable, tech-enabled framework for women's livelihood and youth skilling — deployable
+                            by
+                            state government.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DONATE ===== -->
+        <section class="section" id="donate">
+            <div class="container">
+                <p class="eyebrow center">Donate Us</p>
+                <h2 class="center">Your investment creates lasting, measurable change</h2>
+                <p class="center lead">Across women's livelihoods, youth employment, and public education systems. We
+                    welcome CSR partnerships, foundation grants, and individual donors.</p>
+
+                <div class="donate-grid">
+                    <div class="donate-card reveal">
+                        <span class="donate-amount">₹5,000<small>/year</small></span>
+                        <p>Skill one woman for a full year.</p>
+                        <button class="btn btn-outline donate-btn" data-amount="5000">Give This</button>
+                    </div>
+                    <div class="donate-card donate-card--featured reveal">
+                        <span class="featured-tag">Most Chosen</span>
+                        <span class="donate-amount">₹10,000<small>/year</small></span>
+                        <p>Train and place one youth in employment.</p>
+                        <button class="btn btn-primary donate-btn" data-amount="10000">Give This</button>
+                    </div>
+                    <div class="donate-card reveal">
+                        <span class="donate-amount">₹2,00,000<small>/year</small></span>
+                        <p>Integrate skill education in one government school.</p>
+                        <button class="btn btn-outline donate-btn" data-amount="200000">Give This</button>
+                    </div>
+                </div>
+
+                <form class="donate-form" id="donateForm">
+                    <h3>Make a Custom Contribution</h3>
+                    <div class="form-row">
+                        <input type="text" id="donorName" placeholder="Full name" required>
+                        <input type="email" id="donorEmail" placeholder="Email address" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="number" id="donorAmount" placeholder="Amount (₹)" min="100" required>
+                        <select id="donorCause">
+                            <option value="women">Women's Skilling</option>
+                            <option value="youth">Youth Employment</option>
+                            <option value="schools">Public Education</option>
+                            <option value="general">General Fund</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Pledge Contribution</button>
+                    <p class="form-confirm" id="formConfirm" role="status"></p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <p class="brand" style="font-size:22px;display:flex;align-items:center;gap:10px;">
+                    <img src="imgs/logo.svg" alt="Make Tomorrow Logo"
+                        style="width:34px;height:34px;object-fit:contain;" />
+                    Make Tomorrow
+                </p>
+                <p>Creating pathways to empowerment through skill education and livelihood opportunities.</p>
+            </div>
+            <div class="footer-contact">
+                <p><strong>Connect</strong></p>
+                <p>maketomorrow.in</p>
+                <p>8130073705 / 9555334112</p>
+                <p>maketomorrow.org@gmail.com</p>
+            </div>
+            <div class="footer-social">
+                <p><strong>Follow</strong></p>
+                <div class="social-row">
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                    <a href="#" aria-label="YouTube">YouTube</a>
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="row-media">
-        <img src="./imgs/im6.jpg" alt="Mentorship program" loading="lazy">
-      </div>
-      <div class="row-body">
-        <span class="row-tag">03 · Stay the course</span>
-        <h3>Dedicated mentorship program</h3>
-        <p class="row-lede">Students are paired with experienced mentors for ongoing guidance throughout their educational journey.</p>
-        <div class="mini-grid">
-          <div class="mini-card">
-            <i class="fa-solid fa-hands-holding-child"></i>
-            <h4>One-on-one mentoring</h4>
-            <p>Personalized guidance from industry professionals.</p>
-          </div>
-          <div class="mini-card">
-            <i class="fa-solid fa-comments"></i>
-            <h4>Regular check-ins</h4>
-            <p>Continuous support and progress monitoring.</p>
-          </div>
+        <div class="container footer-bottom">
+            <p>© 2026 Make Tomorrow. All rights reserved.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<!-- Career Counseling Flow -->
-<section class="section section--paper" id="counseling">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow eyebrow--dark"><span class="dot"></span>Career counseling</p>
-      <h2>Two roads to the same guidance.</h2>
-      <p class="section-sub">Two accessible modes, designed to reach students from every background.</p>
-    </div>
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
-    <div class="flow">
-      <div class="flow-trigger"><i class="fa-solid fa-graduation-cap"></i> Student seeks career guidance</div>
-      <div class="flow-line" aria-hidden="true"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
 
-      <div class="flow-modes">
-        <div class="mode-card mode-card--online">
-          <h4><i class="fa-solid fa-wifi"></i> Online career counseling</h4>
-          <ul>
-            <li>Virtual one-to-one counseling sessions</li>
-            <li>Career awareness webinars</li>
-            <li>Stream &amp; subject guidance</li>
-            <li>Accessible to rural &amp; remote students</li>
-            <li>Follow-up mentorship support</li>
-          </ul>
-        </div>
-        <div class="mode-card mode-card--inperson">
-          <h4><i class="fa-solid fa-people-group"></i> In-person career counseling</h4>
-          <ul>
-            <li>School &amp; community workshops</li>
-            <li>Face-to-face counseling sessions</li>
-            <li>Parental guidance meetings</li>
-            <li>Hands-on aptitude activities</li>
-            <li>On-ground admissions support</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+            /* ---- Mobile nav toggle ---- */
+            const navToggle = document.getElementById('navToggle');
+            const mainNav = document.getElementById('mainNav');
+            if (navToggle && mainNav) {
+                navToggle.addEventListener('click', function () {
+                    const isOpen = mainNav.classList.toggle('open');
+                    navToggle.setAttribute('aria-expanded', isOpen);
+                    navToggle.classList.toggle('open', isOpen);
+                });
+                mainNav.querySelectorAll('a').forEach(function (link) {
+                    link.addEventListener('click', function () {
+                        mainNav.classList.remove('open');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                        navToggle.classList.remove('open');
+                    });
+                });
+            }
 
-<!-- Impact -->
-<section class="section" id="impact">
-  <div class="wrap">
-    <div class="row row--reverse row--impact">
-      <div class="row-media">
-        <img src="./imgs/im8.jpg" alt="Students impacted by Make Tomorrow" loading="lazy">
-      </div>
-      <div class="row-body">
-        <span class="row-tag">Our impact</span>
-        <h3>Creating lasting change in communities.</h3>
-        <p class="row-lede">Our work has touched thousands of lives across India. We measure our success by the success of our students.</p>
+            /* ---- Scroll progress & header shadow ---- */
+            const threadFill = document.getElementById('threadFill');
+            const backToTop = document.getElementById('backToTop');
+            const header = document.getElementById('siteHeader');
 
-        <div class="stat-grid">
-          <div class="stat"><span class="stat-num" data-count="1500">0</span><span class="stat-suffix">+</span><span class="stat-label">Students helped</span></div>
-          <div class="stat"><span class="stat-num" data-count="500">0</span><span class="stat-suffix">+</span><span class="stat-label">Mentor matches</span></div>
-          <div class="stat"><span class="stat-num" data-count="1000">0</span><span class="stat-suffix">+</span><span class="stat-label">Successful admissions</span></div>
-          <div class="stat"><span class="stat-num" data-count="100">0</span><span class="stat-suffix">+</span><span class="stat-label">Families supported</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+            function onScroll() {
+                const st = window.scrollY;
+                const dh = document.documentElement.scrollHeight - window.innerHeight;
+                const pct = dh > 0 ? (st / dh) * 100 : 0;
+                if (threadFill) threadFill.style.width = pct + '%';
+                if (backToTop) backToTop.classList.toggle('visible', st > 500);
+                if (header) header.classList.toggle('scrolled', st > 60);
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
 
-<!-- Contact -->
-<section class="section section--paper" id="contact">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow eyebrow--dark"><span class="dot"></span>Connect with us</p>
-      <h2>Let's start your journey.</h2>
-      <p class="section-sub">Whether you're a student seeking guidance or a changemaker wanting to help, we're here to connect.</p>
-    </div>
+            if (backToTop) {
+                backToTop.addEventListener('click', function () {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
 
-    <div class="row row--reverse">
-      <div class="row-media">
-        <img src="./imgs/im5.jpg" alt="Contact Make Tomorrow" loading="lazy">
-      </div>
-      <div class="row-body">
-        <div class="mini-grid mini-grid--3">
-          <button class="mini-card mini-card--action" id="donateCard">
-            <i class="fa-solid fa-hand-holding-heart"></i>
-            <h4>Support our cause</h4>
-            <p>Make a donation to empower students' futures.</p>
-          </button>
-          <a class="mini-card mini-card--action" href="mailto:maketomorrow.org@gmail.com">
-            <i class="fa-solid fa-envelope"></i>
-            <h4>Email support</h4>
-            <p>maketomorrow.org@gmail.com</p>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+            /* ---- Animated counters ---- */
+            const counters = document.querySelectorAll('.num[data-count]');
+            const animateCounter = function (el) {
+                const target = parseFloat(el.getAttribute('data-count'));
+                const suffix = el.getAttribute('data-suffix') || '';
+                const duration = 1400;
+                const start = performance.now();
 
-<!-- Donation Modal -->
-<div class="modal" id="donationModal">
-  <div class="modal-card">
-    <button class="modal-close" id="modalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                function tick(now) {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const value = Math.floor(eased * target);
+                    el.textContent = value + suffix;
+                    if (progress < 1) requestAnimationFrame(tick);
+                    else el.textContent = target + suffix;
+                }
+                requestAnimationFrame(tick);
+            };
 
-    <div class="modal-head">
-      <h3>Support our mission</h3>
-      <p>Your donation directly funds scholarships, mentorship, and educational resources.</p>
-    </div>
+            const counterObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.4 });
 
-    <div class="bank-list">
-      <div class="bank-row">
-        <div><span class="bank-label">Account name</span><span class="bank-value">MAKE TOMORROW</span></div>
-        <button class="copy-btn" data-copy="MAKE TOMORROW">Copy</button>
-      </div>
-      <div class="bank-row">
-        <div><span class="bank-label">Account number</span><span class="bank-value">82820100003728</span></div>
-        <button class="copy-btn" data-copy="82820100003728">Copy</button>
-      </div>
-      <div class="bank-row">
-        <div><span class="bank-label">Bank</span><span class="bank-value">Bank of Baroda</span></div>
-        <button class="copy-btn" data-copy="Bank of Baroda">Copy</button>
-      </div>
-      <div class="bank-row">
-        <div><span class="bank-label">Branch</span><span class="bank-value">5 Manak Bihar, New Delhi DL, 110092</span></div>
-        <button class="copy-btn" data-copy="5 Manak Bihar, New Delhi DL, 110092">Copy</button>
-      </div>
-      <div class="bank-row">
-        <div><span class="bank-label">IFSC code</span><span class="bank-value">BARB0KARDEL</span></div>
-        <button class="copy-btn" data-copy="BARB0KARDEL">Copy</button>
-      </div>
-      <div class="bank-row bank-row--static">
-        <div><span class="bank-label">Account type</span><span class="bank-value">Savings account</span></div>
-      </div>
-    </div>
+            counters.forEach(function (c) { counterObserver.observe(c); });
 
-    <p class="modal-note"><i class="fa-solid fa-receipt"></i> For donation receipts and tax exemption certificates, email your transaction details to <strong>donations@maketomorrow.in</strong></p>
-  </div>
-</div>
+            /* ---- Reveal on scroll ---- */
+            const revealEls = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="wrap footer-grid">
-    <div class="footer-brand">
-      <span class="brand-word">Make<em>Tomorrow</em></span>
-      <p>Empowering students to build brighter futures through educational support, mentorship, and guidance.</p>
-    </div>
+            revealEls.forEach(function (el) { revealObserver.observe(el); });
 
-    <div class="footer-col">
-      <h5>Quick links</h5>
-      <a href="#top">Vision &amp; mission</a>
-      <a href="#what-we-do">What we do</a>
-      <a href="#impact">Our impact</a>
-      <a href="#contact">Contact us</a>
-      <a href="#" id="footerDonate">Support our cause</a>
-    </div>
+            /* ---- Story tabs ---- */
+            const tabBtns = document.querySelectorAll('.story-tab-btn');
+            const panels = document.querySelectorAll('.story-panel');
+            tabBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    tabBtns.forEach(function (b) { b.classList.remove('active'); });
+                    panels.forEach(function (p) { p.classList.remove('active'); });
+                    btn.classList.add('active');
+                    const panel = document.getElementById(btn.dataset.tab);
+                    if (panel) panel.classList.add('active');
+                });
+            });
 
-    <div class="footer-col">
-      <h5>Connect with us</h5>
-      <div class="social-row">
-        <a href="https://www.facebook.com/wetheneedychild/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/maketomorrow2025" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/make-tomorrow-bb96142a2" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://www.youtube.com/@Make-Tomorrow" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-      </div>
-    </div>
-  </div>
+            /* ---- Donate quick-amount buttons ---- */
+            const donateBtns = document.querySelectorAll('.donate-btn');
+            const amountInput = document.getElementById('donorAmount');
+            const donateForm = document.getElementById('donateForm');
+            donateBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    if (amountInput) {
+                        amountInput.value = btn.dataset.amount;
+                        if (donateForm) {
+                            donateForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            setTimeout(function () { amountInput.focus(); }, 400);
+                        }
+                    }
+                });
+            });
 
-  <div class="wrap footer-bottom">
-    <p>© 2024 Make Tomorrow. All rights reserved.</p>
-    <p class="footer-tag">Empowering students. Building futures.</p>
-  </div>
-</footer>
+            /* ---- Donation form ---- */
+            const formConfirm = document.getElementById('formConfirm');
+            if (donateForm) {
+                donateForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const name = document.getElementById('donorName');
+                    const amount = document.getElementById('donorAmount');
+                    if (!name || !amount || !name.value.trim() || !amount.value) return;
+                    if (formConfirm) {
+                        formConfirm.textContent = 'Thank you, ' + name.value.trim() + '! Your pledge of ₹' +
+                            Number(amount.value).toLocaleString('en-IN') +
+                            ' has been recorded. Our team will reach out shortly.';
+                    }
+                    donateForm.reset();
+                });
+            }
 
-<script src="script.js"></script>
+            /* ---- Active nav highlight ---- */
+            const sections = document.querySelectorAll('main section[id]');
+            const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
+            if (sections.length && navLinks.length) {
+                const navObs = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.getAttribute('id');
+                            navLinks.forEach(function (link) {
+                                link.classList.toggle('active-link', link.getAttribute('href') === '#' +
+                                    id);
+                            });
+                        }
+                    });
+                }, { threshold: 0.4, rootMargin: '-80px 0px -50% 0px' });
+                sections.forEach(function (s) { navObs.observe(s); });
+            }
+
+        });
+    </script>
+
 </body>
+
 </html>
