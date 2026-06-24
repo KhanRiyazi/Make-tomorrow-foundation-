@@ -31,6 +31,7 @@
             --shadow-sm: 0 4px 16px rgba(30, 26, 23, 0.06);
             --shadow-md: 0 12px 32px rgba(30, 26, 23, 0.10);
             --shadow-lg: 0 24px 56px rgba(30, 26, 23, 0.14);
+            --header-height: 72px;
         }
 
         * {
@@ -49,6 +50,7 @@
             background: var(--paper);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            padding-top: var(--header-height);
         }
 
         img {
@@ -77,7 +79,7 @@
         .container {
             max-width: var(--maxw);
             margin: 0 auto;
-            padding: 0 28px;
+            padding: 0 24px;
         }
 
         h1,
@@ -91,11 +93,11 @@
         }
 
         h2 {
-            font-size: clamp(30px, 4.2vw, 46px);
+            font-size: clamp(28px, 4.2vw, 46px);
         }
 
         h3 {
-            font-size: clamp(20px, 2.4vw, 26px);
+            font-size: clamp(18px, 2.4vw, 26px);
         }
 
         p {
@@ -146,59 +148,78 @@
             transition: width 0.08s linear;
         }
 
-        /* ===== HEADER ===== */
+        /* ===== HEADER — FULLY RESPONSIVE ===== */
         .site-header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(250, 246, 239, 0.92);
-            backdrop-filter: blur(12px);
+            height: var(--header-height);
+            background: rgba(250, 246, 239, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid rgba(30, 26, 23, 0.06);
-            transition: box-shadow 0.3s;
+            transition: box-shadow 0.3s, height 0.3s;
         }
 
         .site-header.scrolled {
             box-shadow: var(--shadow-sm);
+            height: 64px;
         }
 
         .header-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 76px;
+            height: 100%;
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        /* ---- Brand Logo ---- */
+        /* ---- Brand ---- */
         .brand {
             display: flex;
             align-items: center;
             gap: 10px;
             font-family: var(--font-display);
             font-weight: 700;
-            font-size: 22px;
+            font-size: clamp(18px, 2vw, 24px);
             letter-spacing: -0.02em;
             color: var(--ink);
+            flex-shrink: 0;
+            z-index: 1001;
+            transition: font-size 0.3s;
+        }
+
+        .site-header.scrolled .brand {
+            font-size: clamp(16px, 1.6vw, 21px);
         }
 
         .brand-logo {
             flex-shrink: 0;
-            width: 40px;
-            height: 40px;
+            width: clamp(34px, 3.8vw, 44px);
+            height: clamp(34px, 3.8vw, 44px);
             object-fit: contain;
+            transition: width 0.3s, height 0.3s;
+        }
+
+        .site-header.scrolled .brand-logo {
+            width: clamp(28px, 3vw, 38px);
+            height: clamp(28px, 3vw, 38px);
         }
 
         .brand span {
             color: var(--terracotta);
         }
 
-        /* ---- Nav ---- */
+        /* ---- Desktop Nav ---- */
         .main-nav {
             display: flex;
             align-items: center;
-            gap: 28px;
-            font-size: 14.5px;
+            gap: clamp(16px, 2.5vw, 36px);
+            font-size: clamp(13px, 1.1vw, 15px);
             font-weight: 600;
         }
 
@@ -206,6 +227,8 @@
             opacity: 0.75;
             transition: opacity 0.2s, color 0.2s;
             position: relative;
+            padding: 4px 0;
+            white-space: nowrap;
         }
 
         .main-nav a:hover {
@@ -221,7 +244,7 @@
         .main-nav a.active-link::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -2px;
             left: 0;
             right: 0;
             height: 2px;
@@ -232,49 +255,325 @@
         .nav-cta {
             background: var(--terracotta);
             color: var(--white) !important;
-            padding: 9px 22px;
+            padding: 8px 22px;
             border-radius: 30px;
             opacity: 1 !important;
-            transition: background 0.25s, transform 0.2s;
+            transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+            box-shadow: 0 4px 12px rgba(181, 72, 46, 0.20);
+            font-weight: 700;
         }
 
         .nav-cta:hover {
             background: var(--terracotta-dark);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(181, 72, 46, 0.30);
             color: var(--white) !important;
         }
 
+        .site-header.scrolled .nav-cta {
+            padding: 6px 16px;
+            font-size: clamp(12px, 0.8vw, 14px);
+        }
+
+        /* ---- Hamburger Toggle ---- */
         .nav-toggle {
             display: none;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             gap: 5px;
-            width: 34px;
-            height: 34px;
+            width: 42px;
+            height: 42px;
             background: none;
             border: none;
             padding: 0;
+            z-index: 1001;
+            border-radius: 8px;
+            transition: background 0.2s;
+            flex-shrink: 0;
+            margin-left: 8px;
+        }
+
+        .nav-toggle:hover {
+            background: rgba(30, 26, 23, 0.04);
         }
 
         .nav-toggle span {
             display: block;
-            width: 100%;
+            width: 24px;
             height: 2.5px;
             background: var(--ink);
             border-radius: 2px;
-            transition: 0.25s;
+            transition: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            transform-origin: center;
         }
 
         .nav-toggle.open span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
+            width: 26px;
         }
 
         .nav-toggle.open span:nth-child(2) {
             opacity: 0;
+            transform: scaleX(0);
         }
 
         .nav-toggle.open span:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -5px);
+            width: 26px;
+        }
+
+        /* ---- Mobile Menu Overlay ---- */
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(30, 26, 23, 0.40);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+        }
+
+        .mobile-menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ---- Mobile Nav (slide-in) - BIG, FULL WIDTH ---- */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 420px;
+            z-index: 1000;
+            background: var(--paper);
+            padding: 80px 28px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: -8px 0 40px rgba(30, 26, 23, 0.15);
+            overflow-y: auto;
+            overscroll-behavior: contain;
+        }
+
+        .mobile-nav.open {
+            transform: translateX(0);
+        }
+
+        /* BIG, TAPPABLE BUTTONS */
+        .mobile-nav a {
+            font-size: 22px;
+            font-weight: 600;
+            padding: 18px 20px;
+            border-radius: 14px;
+            color: var(--ink);
+            transition: background 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-height: 64px;
+            letter-spacing: -0.01em;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a:active {
+            background: rgba(181, 72, 46, 0.06);
+            color: var(--terracotta);
+        }
+
+        .mobile-nav a.active-link {
+            background: rgba(181, 72, 46, 0.08);
+            color: var(--terracotta);
+        }
+
+        .mobile-nav .mobile-nav-cta {
+            margin-top: 20px;
+            background: var(--terracotta);
+            color: var(--white) !important;
+            border-radius: 30px;
+            justify-content: center;
+            padding: 20px;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(181, 72, 46, 0.25);
+            font-size: 22px;
+            min-height: 72px;
+        }
+
+        .mobile-nav .mobile-nav-cta:hover,
+        .mobile-nav .mobile-nav-cta:active {
+            background: var(--terracotta-dark);
+            color: var(--white) !important;
+        }
+
+        /* ---- Mobile nav close button ---- */
+        .mobile-nav-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(30, 26, 23, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--ink);
+            transition: background 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-nav-close:hover {
+            background: rgba(30, 26, 23, 0.10);
+        }
+
+        /* ===== RESPONSIVE BREAKPOINTS ===== */
+
+        /* --- Show hamburger on tablet & smaller --- */
+        @media (max-width: 1024px) {
+            .main-nav {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+        }
+
+        /* --- Small tablet & large phone --- */
+        @media (max-width: 640px) {
+            :root {
+                --header-height: 64px;
+            }
+
+            .header-inner {
+                padding: 0 14px;
+            }
+
+            .brand {
+                gap: 8px;
+                font-size: 18px;
+            }
+
+            .brand-logo {
+                width: 32px;
+                height: 32px;
+            }
+
+            .site-header.scrolled .brand-logo {
+                width: 28px;
+                height: 28px;
+            }
+
+            .site-header.scrolled .brand {
+                font-size: 16px;
+            }
+
+            .nav-toggle {
+                width: 38px;
+                height: 38px;
+                gap: 4px;
+            }
+
+            .nav-toggle span {
+                width: 20px;
+                height: 2.5px;
+            }
+
+            .nav-toggle.open span:nth-child(1),
+            .nav-toggle.open span:nth-child(3) {
+                width: 22px;
+            }
+
+            .mobile-nav {
+                max-width: 100%;
+                padding: 72px 18px 30px;
+            }
+
+            .mobile-nav a {
+                font-size: 20px;
+                padding: 16px 16px;
+                min-height: 60px;
+            }
+
+            .mobile-nav .mobile-nav-cta {
+                font-size: 20px;
+                padding: 18px;
+                min-height: 66px;
+            }
+
+            .site-header.scrolled {
+                height: 58px;
+            }
+        }
+
+        /* --- Very small phones --- */
+        @media (max-width: 400px) {
+            :root {
+                --header-height: 58px;
+            }
+
+            .brand {
+                font-size: 16px;
+                gap: 6px;
+            }
+
+            .brand-logo {
+                width: 28px;
+                height: 28px;
+            }
+
+            .site-header.scrolled .brand-logo {
+                width: 24px;
+                height: 24px;
+            }
+
+            .site-header.scrolled .brand {
+                font-size: 14px;
+            }
+
+            .nav-toggle {
+                width: 34px;
+                height: 34px;
+                gap: 3.5px;
+            }
+
+            .nav-toggle span {
+                width: 18px;
+                height: 2px;
+            }
+
+            .nav-toggle.open span:nth-child(1),
+            .nav-toggle.open span:nth-child(3) {
+                width: 20px;
+            }
+
+            .site-header.scrolled {
+                height: 52px;
+            }
+
+            .mobile-nav {
+                padding: 64px 14px 24px;
+            }
+
+            .mobile-nav a {
+                font-size: 18px;
+                padding: 14px 14px;
+                min-height: 54px;
+            }
+
+            .mobile-nav .mobile-nav-cta {
+                font-size: 18px;
+                padding: 16px;
+                min-height: 60px;
+            }
         }
 
         /* ===== BUTTONS ===== */
@@ -331,10 +630,34 @@
             width: 100%;
         }
 
+        .btn-copy {
+            background: var(--sand);
+            color: var(--ink);
+            padding: 6px 16px;
+            font-size: 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            border: 1px solid rgba(30, 26, 23, 0.10);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-copy:hover {
+            background: var(--terracotta);
+            color: var(--white);
+            border-color: var(--terracotta);
+        }
+
+        .btn-copy.copied {
+            background: #2d7d46;
+            color: var(--white);
+            border-color: #2d7d46;
+        }
+
         /* ===== HERO ===== */
         .hero {
             position: relative;
-            padding: 150px 0 80px;
+            padding: 120px 0 80px;
             overflow: hidden;
             background: var(--sand);
             min-height: 100vh;
@@ -372,7 +695,7 @@
         }
 
         .hero-content h1 {
-            font-size: clamp(44px, 7vw, 78px);
+            font-size: clamp(38px, 7vw, 78px);
             margin-bottom: 16px;
             line-height: 1.05;
         }
@@ -422,7 +745,6 @@
             margin-top: 4px;
         }
 
-        /* ---- Hero Illustration (Happy Emotions) ---- */
         .hero-visual {
             display: flex;
             align-items: center;
@@ -632,7 +954,7 @@
             background: var(--marigold);
         }
 
-        /* ===== SERIOUS EMOTIONS — IMPACT ILLUSTRATION ===== */
+        /* ===== IMPACT ===== */
         .impact-visual-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -657,7 +979,6 @@
             margin: 0 auto;
         }
 
-        /* ===== IMPACT GRID ===== */
         .impact-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -948,7 +1269,125 @@
             color: #4a423c;
         }
 
-        /* ---- Donate Form ---- */
+        /* ===== BANK DETAILS ===== */
+        .bank-details {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px 44px;
+            border: 1px solid rgba(30, 26, 23, 0.06);
+            box-shadow: var(--shadow-sm);
+            margin: 0 0 48px 0;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bank-details .bank-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .bank-details .bank-header .bank-icon {
+            font-size: 28px;
+        }
+
+        .bank-details .bank-header h3 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .bank-details .bank-header .upi-badge {
+            background: var(--sand);
+            color: var(--ink);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            margin-left: auto;
+        }
+
+        .bank-details .bank-row {
+            display: grid;
+            grid-template-columns: 140px 1fr auto;
+            gap: 12px 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(30, 26, 23, 0.05);
+            align-items: center;
+        }
+
+        .bank-details .bank-row:last-child {
+            border-bottom: none;
+        }
+
+        .bank-details .bank-row .label {
+            font-weight: 600;
+            font-size: 13.5px;
+            color: var(--thread);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .bank-details .bank-row .value {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--ink);
+            word-break: break-all;
+        }
+
+        .bank-details .bank-row .value.mono {
+            font-family: 'Manrope', monospace;
+            letter-spacing: 0.02em;
+        }
+
+        .bank-details .bank-row .copy-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bank-details .bank-row .copy-wrap .value {
+            flex: 1;
+        }
+
+        .bank-details .upi-row {
+            background: rgba(217, 142, 43, 0.06);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border: 1px dashed var(--marigold);
+        }
+
+        .bank-details .upi-row .upi-label {
+            font-weight: 600;
+            font-size: 13.5px;
+            color: var(--thread);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .bank-details .upi-row .upi-value {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--terracotta);
+            font-family: 'Manrope', monospace;
+        }
+
+        .bank-details .upi-row .upi-note {
+            font-size: 13px;
+            color: #4a423c;
+            width: 100%;
+        }
+
+        /* ===== DONATE FORM ===== */
         .donate-form {
             max-width: 640px;
             margin: 0 auto;
@@ -1101,7 +1540,7 @@
             transform: translateY(0);
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== RESPONSIVE (non-header) ===== */
         @media (max-width: 1024px) {
             .hero-inner {
                 grid-template-columns: 1fr;
@@ -1163,29 +1602,6 @@
         }
 
         @media (max-width: 768px) {
-            .main-nav {
-                position: fixed;
-                top: 76px;
-                left: 0;
-                right: 0;
-                background: var(--paper);
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 28px 28px 32px;
-                gap: 18px;
-                border-bottom: 1px solid rgba(30, 26, 23, 0.08);
-                transform: translateY(-110%);
-                transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-                box-shadow: var(--shadow-md);
-            }
-
-            .main-nav.open {
-                transform: translateY(0);
-            }
-
-            .nav-toggle {
-                display: flex;
-            }
 
             .three-col,
             .stat-row,
@@ -1197,7 +1613,7 @@
             }
 
             .hero {
-                padding: 130px 0 60px;
+                padding: 100px 0 50px;
                 min-height: auto;
             }
 
@@ -1238,6 +1654,35 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .bank-details {
+                padding: 28px 20px;
+            }
+
+            .bank-details .bank-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+                padding: 14px 0;
+            }
+
+            .bank-details .bank-row .copy-wrap {
+                flex-wrap: wrap;
+            }
+
+            .bank-details .bank-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .bank-details .bank-header .upi-badge {
+                margin-left: 0;
+            }
+
+            .bank-details .upi-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1246,7 +1691,7 @@
             }
 
             .hero-content h1 {
-                font-size: 34px;
+                font-size: 32px;
             }
 
             .hero-illustration {
@@ -1270,7 +1715,15 @@
             }
 
             .section {
-                padding: 60px 0;
+                padding: 56px 0;
+            }
+
+            .bank-details .bank-row .value {
+                font-size: 14px;
+            }
+
+            .bank-details .upi-row .upi-value {
+                font-size: 16px;
             }
         }
 
@@ -1296,12 +1749,13 @@
 
     <!-- ===== HEADER ===== -->
     <header class="site-header" id="siteHeader">
-        <div class="container header-inner">
+        <div class="header-inner">
             <a href="#top" class="brand" aria-label="Make Tomorrow home">
-                <!-- Brand Logo from local imgs folder -->
                 <img src="./imgs/logo.jpg" alt="Make Tomorrow Logo" class="brand-logo" />
                 Make <span>Tomorrow</span>
             </a>
+
+            <!-- Desktop Navigation -->
             <nav class="main-nav" id="mainNav">
                 <a href="#who">Who We Are</a>
                 <a href="#why">Why We Do</a>
@@ -1309,15 +1763,30 @@
                 <a href="#stories">Stories</a>
                 <a href="#donate" class="nav-cta">Donate</a>
             </nav>
+
+            <!-- Hamburger Toggle -->
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+
+        <!-- Mobile Navigation (BIG, FULL-WIDTH, EASY TO TAP) -->
+        <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+            <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">✕</button>
+            <a href="#who">Who We Are</a>
+            <a href="#why">Why We Do</a>
+            <a href="#impact">Impact</a>
+            <a href="#stories">Stories</a>
+            <a href="#donate" class="mobile-nav-cta">Donate</a>
+        </nav>
     </header>
 
     <main id="top">
 
-        <!-- ===== HERO — Happy Emotions ===== -->
+        <!-- ===== HERO ===== -->
         <section class="hero" id="hero">
             <div class="hero-bg" aria-hidden="true">
                 <svg viewBox="0 0 1200 800" preserveAspectRatio="none">
@@ -1346,7 +1815,6 @@
                                 class="label">Govt. Schools</span></div>
                     </div>
                 </div>
-                <!-- HAPPY EMOTIONS ILLUSTRATION — local image -->
                 <div class="hero-visual">
                     <img src="./imgs/happy.jpg" alt="Happy and empowered woman illustration"
                         class="hero-illustration" />
@@ -1440,11 +1908,9 @@
             </div>
         </section>
 
-        <!-- ===== IMPACT with SERIOUS EMOTIONS illustration ===== -->
+        <!-- ===== IMPACT ===== -->
         <section class="section section-tint" id="impact">
             <div class="container">
-
-                <!-- Serious Emotions Illustration + Text -->
                 <div class="impact-visual-row">
                     <div class="impact-text">
                         <p class="eyebrow">Our Impact</p>
@@ -1457,7 +1923,6 @@
                         class="impact-illustration" />
                 </div>
 
-                <!-- Impact Numbers -->
                 <div class="impact-grid">
                     <div class="impact-card reveal">
                         <span class="num" data-count="10" data-suffix="+">0</span>
@@ -1609,8 +2074,59 @@
                     </div>
                 </div>
 
+                <!-- BANK DETAILS -->
+                <div class="bank-details reveal" id="bankDetails">
+                    <div class="bank-header">
+                        <span class="bank-icon">🏦</span>
+                        <h3>Direct Bank Transfer</h3>
+                        <span class="upi-badge">UPI Available</span>
+                    </div>
+
+                    <div class="bank-row">
+                        <span class="label">Account Holder</span>
+                        <span class="value">Imran Ali</span>
+                        <span></span>
+                    </div>
+                    <div class="bank-row">
+                        <span class="label">Bank Name</span>
+                        <span class="value">Bank of Baroda</span>
+                        <span></span>
+                    </div>
+                    <div class="bank-row">
+                        <span class="label">Account Number</span>
+                        <div class="copy-wrap">
+                            <span class="value mono">82820100003728</span>
+                            <button class="btn-copy" data-copy="82820100003728"
+                                aria-label="Copy account number">Copy</button>
+                        </div>
+                    </div>
+                    <div class="bank-row">
+                        <span class="label">IFSC Code</span>
+                        <div class="copy-wrap">
+                            <span class="value mono">BARB0KARDEL</span>
+                            <button class="btn-copy" data-copy="BARB0KARDEL" aria-label="Copy IFSC code">Copy</button>
+                        </div>
+                    </div>
+                    <div class="bank-row" style="border-bottom: none; padding-bottom: 4px;">
+                        <span class="label">Account Type</span>
+                        <span class="value">Current Account</span>
+                        <span></span>
+                    </div>
+
+                    <div class="upi-row">
+                        <span class="upi-label">📱 UPI ID</span>
+                        <span class="upi-value">maketomorrow@upi</span>
+                        <button class="btn-copy" data-copy="maketomorrow@upi" aria-label="Copy UPI ID">Copy</button>
+                        <span class="upi-note">Scan any UPI app (Google Pay, PhonePe, Paytm) to donate instantly.</span>
+                    </div>
+                </div>
+
+                <!-- Pledge Form -->
                 <form class="donate-form" id="donateForm">
-                    <h3>Make a Custom Contribution</h3>
+                    <h3>Or Pledge Your Contribution</h3>
+                    <p style="text-align:center;font-size:14px;color:#4a423c;margin-bottom:20px;">
+                        Let us know your intent — we'll reach out to guide you through the process.
+                    </p>
                     <div class="form-row">
                         <input type="text" id="donorName" placeholder="Full name" required>
                         <input type="email" id="donorEmail" placeholder="Email address" required>
@@ -1637,7 +2153,7 @@
         <div class="container footer-inner">
             <div class="footer-brand">
                 <p class="brand" style="font-size:22px;display:flex;align-items:center;gap:10px;">
-                    <img src="imgs/logo.svg" alt="Make Tomorrow Logo"
+                    <img src="./imgs/logo.jpg" alt="Make Tomorrow Logo"
                         style="width:34px;height:34px;object-fit:contain;" />
                     Make Tomorrow
                 </p>
@@ -1670,25 +2186,69 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
-            /* ---- Mobile nav toggle ---- */
+            /* ===== Mobile Menu Toggle ===== */
             const navToggle = document.getElementById('navToggle');
-            const mainNav = document.getElementById('mainNav');
-            if (navToggle && mainNav) {
-                navToggle.addEventListener('click', function () {
-                    const isOpen = mainNav.classList.toggle('open');
-                    navToggle.setAttribute('aria-expanded', isOpen);
-                    navToggle.classList.toggle('open', isOpen);
-                });
-                mainNav.querySelectorAll('a').forEach(function (link) {
-                    link.addEventListener('click', function () {
-                        mainNav.classList.remove('open');
-                        navToggle.setAttribute('aria-expanded', 'false');
-                        navToggle.classList.remove('open');
-                    });
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const mobileNavClose = document.getElementById('mobileNavClose');
+            const body = document.body;
+
+            function openMobileMenu() {
+                mobileNav.classList.add('open');
+                mobileOverlay.classList.add('open');
+                navToggle.classList.add('open');
+                navToggle.setAttribute('aria-expanded', 'true');
+                body.style.overflow = 'hidden';
+            }
+
+            function closeMobileMenu() {
+                mobileNav.classList.remove('open');
+                mobileOverlay.classList.remove('open');
+                navToggle.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                body.style.overflow = '';
+            }
+
+            if (navToggle) {
+                navToggle.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    if (mobileNav.classList.contains('open')) {
+                        closeMobileMenu();
+                    } else {
+                        openMobileMenu();
+                    }
                 });
             }
 
-            /* ---- Scroll progress & header shadow ---- */
+            if (mobileNavClose) {
+                mobileNavClose.addEventListener('click', closeMobileMenu);
+            }
+
+            if (mobileOverlay) {
+                mobileOverlay.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close mobile menu on link click
+            const mobileLinks = mobileNav ? mobileNav.querySelectorAll('a') : [];
+            mobileLinks.forEach(function (link) {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Prevent body scroll when menu is open
+            document.addEventListener('touchmove', function (e) {
+                if (mobileNav && mobileNav.classList.contains('open') && !mobileNav.contains(e.target)) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+
+            /* ===== Scroll progress & header shadow ===== */
             const threadFill = document.getElementById('threadFill');
             const backToTop = document.getElementById('backToTop');
             const header = document.getElementById('siteHeader');
@@ -1699,7 +2259,7 @@
                 const pct = dh > 0 ? (st / dh) * 100 : 0;
                 if (threadFill) threadFill.style.width = pct + '%';
                 if (backToTop) backToTop.classList.toggle('visible', st > 500);
-                if (header) header.classList.toggle('scrolled', st > 60);
+                if (header) header.classList.toggle('scrolled', st > 40);
             }
             window.addEventListener('scroll', onScroll, { passive: true });
             onScroll();
@@ -1710,7 +2270,7 @@
                 });
             }
 
-            /* ---- Animated counters ---- */
+            /* ===== Animated counters ===== */
             const counters = document.querySelectorAll('.num[data-count]');
             const animateCounter = function (el) {
                 const target = parseFloat(el.getAttribute('data-count'));
@@ -1740,7 +2300,7 @@
 
             counters.forEach(function (c) { counterObserver.observe(c); });
 
-            /* ---- Reveal on scroll ---- */
+            /* ===== Reveal on scroll ===== */
             const revealEls = document.querySelectorAll('.reveal');
             const revealObserver = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
@@ -1753,7 +2313,7 @@
 
             revealEls.forEach(function (el) { revealObserver.observe(el); });
 
-            /* ---- Story tabs ---- */
+            /* ===== Story tabs ===== */
             const tabBtns = document.querySelectorAll('.story-tab-btn');
             const panels = document.querySelectorAll('.story-panel');
             tabBtns.forEach(function (btn) {
@@ -1766,7 +2326,7 @@
                 });
             });
 
-            /* ---- Donate quick-amount buttons ---- */
+            /* ===== Donate quick-amount buttons ===== */
             const donateBtns = document.querySelectorAll('.donate-btn');
             const amountInput = document.getElementById('donorAmount');
             const donateForm = document.getElementById('donateForm');
@@ -1782,7 +2342,7 @@
                 });
             });
 
-            /* ---- Donation form ---- */
+            /* ===== Donation form ===== */
             const formConfirm = document.getElementById('formConfirm');
             if (donateForm) {
                 donateForm.addEventListener('submit', function (e) {
@@ -1799,22 +2359,71 @@
                 });
             }
 
-            /* ---- Active nav highlight ---- */
+            /* ===== Active nav highlight ===== */
             const sections = document.querySelectorAll('main section[id]');
             const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
-            if (sections.length && navLinks.length) {
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav a[href^="#"]');
+            const allNavLinks = [...navLinks, ...mobileNavLinks];
+
+            if (sections.length && allNavLinks.length) {
                 const navObs = new IntersectionObserver(function (entries) {
                     entries.forEach(function (entry) {
                         if (entry.isIntersecting) {
                             const id = entry.target.getAttribute('id');
-                            navLinks.forEach(function (link) {
-                                link.classList.toggle('active-link', link.getAttribute('href') === '#' +
-                                    id);
+                            allNavLinks.forEach(function (link) {
+                                const href = link.getAttribute('href');
+                                link.classList.toggle('active-link', href === '#' + id);
                             });
                         }
                     });
                 }, { threshold: 0.4, rootMargin: '-80px 0px -50% 0px' });
                 sections.forEach(function (s) { navObs.observe(s); });
+            }
+
+            /* ===== Copy to clipboard ===== */
+            const copyBtns = document.querySelectorAll('.btn-copy');
+            copyBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const textToCopy = btn.getAttribute('data-copy');
+                    if (!textToCopy) return;
+
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(textToCopy).then(function () {
+                            showCopiedFeedback(btn);
+                        }).catch(function () {
+                            fallbackCopy(textToCopy, btn);
+                        });
+                    } else {
+                        fallbackCopy(textToCopy, btn);
+                    }
+                });
+            });
+
+            function fallbackCopy(text, btn) {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                textarea.style.left = '-9999px';
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    showCopiedFeedback(btn);
+                } catch (e) {
+                    alert('Could not copy. Please select and copy manually.');
+                }
+                document.body.removeChild(textarea);
+            }
+
+            function showCopiedFeedback(btn) {
+                const originalText = btn.textContent;
+                btn.textContent = '✓ Copied!';
+                btn.classList.add('copied');
+                setTimeout(function () {
+                    btn.textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 2500);
             }
 
         });
